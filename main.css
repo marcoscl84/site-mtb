@@ -1,0 +1,33 @@
+header .container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #00D9A3;
+}
+header .logo{
+    background-color: #00D9A3;
+}
+header .botoes{
+    font-size: 20px;
+    font-family: Copperplate Gothic, Helvetica, sans-serif;
+}
+header a:hover{
+    color: black;
+    text-decoration: none;  
+}
+header .botoes a:link, a:visited {
+    background-color: #00D9A3;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+footer .footer{
+    text-align: center;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: Black;
+}
