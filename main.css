@@ -4,6 +4,12 @@ header .container{
     align-items: center;
     justify-content: space-between;
     background-color: #00D9A3;
+    right: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
 }
 header .logo{
     background-color: #00D9A3;
@@ -23,6 +29,11 @@ header .botoes a:link, a:visited {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+}
+
+html, body{
+    margin: 0px;
+    padding: 0px;
 }
 
 /*****/

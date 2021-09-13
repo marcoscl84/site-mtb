@@ -1,5 +1,5 @@
-<header>
-    <div class="container">
+<header style="margin:0px; z-index: 999">
+    <div class="container" style="margin:0px">
         <a class="logo" href="index.php">
             <img src="imagens/logo4984199.png" width="200" alt="mtblogo">
         </a>
