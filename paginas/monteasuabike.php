@@ -4,7 +4,7 @@
 <body>
     <?php include "../header.php"; ?>
     <div class="container-wout-header">
-        <hr>
+        <br>
         monte a sua
         <br>
         <?php include "../footer.php"; ?>

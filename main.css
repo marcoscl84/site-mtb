@@ -37,12 +37,10 @@ header .botoes a:link, a:visited {
 * {box-sizing:border-box}
  
         /* Slideshow container */
-        .slideshow-container0 {
-        max-width: auto;
-        max-height: 500px;
-        position: relative;
+        .slideshow-container {
+        position: absolute;
         margin: auto;
-        top: 0px; 
+        top: 110px;
         }
  
         /* On hover, add a black background color with a little bit see-through */
@@ -82,6 +80,13 @@ html, body{
 }
  
 /* container sem header */
+.container-wout-header-index {
+    position: absolute;
+    top: 633px;
+    width: 100%;
+    height: 100%;
+}
+
 .container-wout-header {
     position: absolute;
     top: 110px;

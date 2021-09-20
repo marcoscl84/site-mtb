@@ -5,7 +5,7 @@
     <?php include "../header.php"; ?>
  
     <div class="container-wout-header">
-        <hr>
+        <br>
         modalidades    
         <br>
         <?php include "../footer.php"; ?>

@@ -54,20 +54,22 @@
     <?php include "header.php"; ?>
     
     <!-- Slideshow container -->
-    <div class="slideshow-container container-wout-header">
- 
+    <div class="slideshow-container" style="z-index: 992">
         <!-- Full-width images -->
         <div class="mySlides fade">
             <img src="imagens/DSCN0747-2.jpg" style="width:100%">
         </div>
- 
+
         <div class="mySlides fade">
             <img src="imagens/20210408_174856_HDR-2.jpg" style="width:100%">
         </div>
- 
+
         <div class="mySlides fade">
             <img src="imagens/20200808_162240-2.jpg" style="width:100%">
         </div>
+    </div>
+
+    <div class="container-wout-header-index">
  
         <div class="index-vid">
             <iframe width="100%" height="600px" 
