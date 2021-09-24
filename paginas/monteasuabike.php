@@ -1,37 +1,17 @@
 <?php
 
 if(isset($_REQUEST['envia'])){
+    
     $rdMod = $_REQUEST['rdModalidade'];
     $rdMarca = $_REQUEST['rdMarca'];
     $rdTipo = $_REQUEST['rdTipo'];
-
-    //ajustar array com as variáveis a serem comparadas no laço for
-    $modalidade = array("xco", "enduro", "downhill", "emtb");
-    $marca = array("scott", "specialized", "cannondale", "trek");
-    $tipo = array("FS", "HT");
-
-    $modSize = count($modalidade);
-    $marSize = count($marca);
-    $tipSize = count($tipo);
-
-    
-
-    for($i=0; $i<=$modSize; $i++){
-        for($j=0; $j<=$marSize; $j++){
-            for($k=0; $k<=$tipSize; $k++){
-                if($modalidade[i] == $rdMod && $marca[j] == $rdMarca && $tipo[k] == $rdTipo) {
-                    // criar busca no banco de imagens para vincular ao resultado 
-                }
-            }
-        }
-    }
-    
-
+ 
+    require("dbConnect.php");
+ 
+    $bikeSelectNoBanco = mysqli_query($conexao, "SELECT * FROM 'bike' WHERE 
+    id_modalidade = $rdMod AND id_marca = $rdMarca AND id_tipo = $rdTipo");
 } 
-
 ?>
-
-<?php $url_base = "http://localhost/apresenta-bikes"; ?>
 
 <head>
     <link rel="stylesheet" href="../main.css"/>
@@ -42,10 +22,10 @@ if(isset($_REQUEST['envia'])){
         <br>
         <form method="$_REQUEST">
             <div class="seleciona-modalidade">
-                <input name="rdModalidade" id="xco" type="radio">XCO</input>
-                <input name="rdModalidade" id="enduro" type="radio">Enduro</input>
-                <input name="rdModalidade" id="downhill" type="radio">Downhill</input>
-                <input name="rdModalidade" id="emtb" type="radio">E-MTB</input>
+                <input name="rdModalidade" value="1" type="radio">XCO</input>
+                <input name="rdModalidade" value="2" type="radio">Enduro</input>
+                <input name="rdModalidade" value="3" type="radio">Downhill</input>
+                <input name="rdModalidade" value="4" type="radio">E-MTB</input>
             </div>
             <br>
             <div class="seleciona-marca">
@@ -54,25 +34,30 @@ if(isset($_REQUEST['envia'])){
                 <img src="<?php echo $url_base ?>/imagens/cannondale-4c046f61-d1f7-4446-b2a6-d7fef877b85e.jpg" alt="Cannondale" style="width:100px"/>
                 <img src="<?php echo $url_base ?>/imagens/TREK-logo-A449338C0F-seeklogo.jpg" alt="Trek" style="width:100px"/>
                 <br>
-                <input name="rdMarca" id="scott" type="radio">Scott</input>
-                <input name="rdMarca" id="specialized" type="radio">Specialized</input>
-                <input name="rdMarca" id="cannondale" type="radio">Cannodale</input>
-                <input name="rdMarca" id="trek" type="radio">Trek</input>
+                <input name="rdMarca" value="1" type="radio">Scott</input>
+                <input name="rdMarca" value="2" type="radio">Specialized</input>
+                <input name="rdMarca" value="3" type="radio">Cannodale</input>
+                <input name="rdMarca" value="4" type="radio">Trek</input>
             </div>
             <br>
             <div class="seleciona-tipo">
                 <img src="<?php echo $url_base ?>/imagens/posters-bicycle-types-vector-illustration.jpg" alt="FullSuspension" style="width:100px"/>
                 <img src="<?php echo $url_base ?>/imagens/posters-bicycle-types-vector-illustration ht.jpg" alt="HardTail" style="width:100px"/>
                 <br>
-                <input name="rdTipo" id="FS" type="radio">Full Suspension</input>
-                <input name="rdTipo" id="HT" type="radio">Hard tail</input>
+                <input name="rdTipo" value="1" type="radio">Full Suspension</input>
+                <input name="rdTipo" value="2" type="radio">Hard tail</input>
             </div>
 
-            <input type="submit" id="envia" value="Enviar"/>
-            
+            <input type="submit" id="envia" value="Enviar"/>            
         </form>
-        <!-- colocar aqui a lógica em php pra receber a resposta -->
         
+        <!-- Exibe dados da busca no banco -->
+        <?php 
+            if(isset($bikeSelectNoBanco)){
+                echo $bikeSelectNoBanco;
+            }
+        ?>
+
         <br>
         <?php include "../footer.php"; ?>
     </div>
