@@ -130,6 +130,63 @@ html, body{
     width: 100%;
     height: fit-content;
 }
+
+/* Página "fotos" */
+.fotos img {
+    max-width: 100%;
+    display: block;
+}
+ 
+.fotos img {
+    -webkit-transition: all 1s ease;
+    /* Safari and Chrome */
+    -moz-transition: all 1s ease;
+    /* Firefox */
+    -o-transition: all 1s ease;
+    /* IE 9 */
+    -ms-transition: all 1s ease;
+    /* Opera */
+    transition: all 1s ease;
+}
+ 
+.fotos:hover img {
+    -webkit-transform: scale(1.25);
+    /* Safari and Chrome */
+    -moz-transform: scale(1.25);
+    /* Firefox */
+    -ms-transform: scale(1.25);
+    /* IE 9 */
+    -o-transform: scale(1.25);
+    /* Opera */
+    transform: scale(1.25);
+}
+ 
+/* Página "monte a sua bike" */
+select {
+    position: relative;
+    width: 150px;
+    text-align: center;
+    background-color: DodgerBlue;
+    color: white;
+    top: 0px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+ 
+.seleciona-itens {
+    width: auto;
+    height: 150px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.submit-botao {
+    text-align: center;
+}
  
 footer .footer{
     text-align: center;
