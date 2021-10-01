@@ -38,9 +38,9 @@ header .botoes a:link, a:visited {
  
         /* Slideshow container */
         .slideshow-container {
-        position: absolute;
+        position: relative;
         margin: auto;
-        top: 110px;
+        top: 0px;
         }
  
         /* On hover, add a black background color with a little bit see-through */
@@ -54,7 +54,7 @@ header .botoes a:link, a:visited {
         -webkit-animation-duration: 1s;
         animation-name: fade;
         animation-duration: 1s;
-        background-color: white;
+        background-color: black;
         }
  
         @-webkit-keyframes fade {
@@ -80,16 +80,16 @@ html, body{
 }
  
 /* container sem header */
-.container-wout-header-index {
+.container-wout-header {
     position: absolute;
-    top: 633px;
+    top: 110px;
     width: 100%;
     height: 100%;
 }
 
-.container-wout-header {
-    position: absolute;
-    top: 110px;
+.container-wout-slides-header-index {
+    position: relative;
+    top: 0px;
     width: 100%;
     height: 100%;
 }
