@@ -82,11 +82,17 @@
             <div class="spacetoshow-bgimage-fixed"></div>
         
             <div class="websites">
-                websites <br>
-                websites <br>
-                websites <br>
-                websites <br>
-                <!--colocar ícones acessíveis aos sites com seus logos -->
+                <a class="links" href="https://www.roadtripmtb.com.br" target="_blank">
+                    <img src="<?php echo $url_base ?>/imagens/IMG-20210719-WA0006.jpg" width="100" alt="roadtripmtb">
+                </a>
+
+                <a class="links" href="https://www.vitalmtb.com" target="_blank">
+                    <img src="<?php echo $url_base ?>/imagens/s900_pof.jpg" width="100" alt="vitalmtb">
+                </a>
+
+                <a class="links" href="https://www.pinkbike.com" target="_blank">
+                    <img src="<?php echo $url_base ?>/imagens/pink-bike-logo.png" width="100" alt="pinkbike">
+                </a>        
             </div>
        
             <?php include "footer.php"; ?>

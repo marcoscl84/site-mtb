@@ -36,7 +36,7 @@ if(isset($_REQUEST['envia'])){
         <form method="$_REQUEST">
             <div class="seleciona-itens">
                 <select class="seleciona-modalidade" id="mod" onchange="opcaoOculta()">
-                    <option>Selecione a modalidade:</option>
+                    <option>MODALIDADE:</option>
                     <option name="rdModalidade" value="1">XCO</option>
                     <option name="rdModalidade" value="2">Enduro</option>
                     <option name="rdModalidade" value="3">Downhill</option>
@@ -52,7 +52,7 @@ if(isset($_REQUEST['envia'])){
                                 <img src="<?php //echo $url_base ?>/imagens/TREK-logo-A449338C0F-seeklogo.jpg" alt="Trek" style="width:100px"/>
                                 <br>
                                 -->
-                    <option>Selecione a marca:</option>
+                    <option>MARCA:</option>
                     <option name="rdMarca" value="1">Scott</option>
                     <option name="rdMarca" value="2">Specialized</option>
                     <option name="rdMarca" value="3">Cannodale</option>
@@ -66,7 +66,7 @@ if(isset($_REQUEST['envia'])){
                                 <img src="<?php //echo $url_base ?>/imagens/posters-bicycle-types-vector-illustration ht.jpg" alt="HardTail" style="width:100px"/>
                                 <br>
                                 -->
-                    <option>Selecione o tipo:</option>
+                    <option>TIPO:</option>
                     <option name="rdTipo" value="1">Full Suspension</option>
                     <option name="rdTipo" value="2">Hard Tail</option>                    
                 </select>

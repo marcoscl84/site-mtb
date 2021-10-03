@@ -54,7 +54,7 @@ header .botoes a:link, a:visited {
         -webkit-animation-duration: 1s;
         animation-name: fade;
         animation-duration: 1s;
-        background-color: black;
+        background-color: white;
         }
  
         @-webkit-keyframes fade {
@@ -164,9 +164,12 @@ html, body{
 /* Página "monte a sua bike" */
 select {
     position: relative;
-    width: 150px;
+    font-family: Copperplate Gothic, Helvetica, sans-serif;
+    font-size: 15px;
+    width: 200px;
+    height: 50px;
     text-align: center;
-    background-color: DodgerBlue;
+    background-color: 00D9A3;
     color: white;
     top: 0px;
     left: 0;
@@ -186,6 +189,17 @@ select {
 
 .submit-botao {
     text-align: center;
+}
+
+.websites {
+    border: white solid 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links{
+    margin: 20px;
 }
  
 footer .footer{
