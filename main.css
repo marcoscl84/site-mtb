@@ -167,19 +167,23 @@ select {
     font-family: Copperplate Gothic, Helvetica, sans-serif;
     font-size: 15px;
     width: 200px;
-    height: 50px;
+    height: 40px;
     text-align: center;
     background-color: 00D9A3;
     color: white;
     top: 0px;
+    bottom: 10px;
     left: 0;
     right: 0;
     z-index: 99;
+    cursor: pointer;
+    border: solid black 1px;
+    margin-bottom: 20px;
+    
 }
  
 .seleciona-itens {
-    width: auto;
-    height: 150px;
+    width: auto; 
     background: white;
     display: flex;
     flex-direction: column;
@@ -187,9 +191,36 @@ select {
     align-items: center
 }
 
+.seleciona-modalidade .seleciona-marca .seleciona-tipo {
+    height: auto;
+}
+
+select:hover {
+    box-shadow: 4px 4px 8px black;
+    transition-duration: 1s;
+}
+
 .submit-botao {
     text-align: center;
 }
+
+#envia {
+    background-color: cornflowerblue;
+    color: white;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+#envia:hover {
+    box-shadow: 2px 2px 5px rgb(14, 175, 250);
+    transition-duration: 1.5s;
+}
+
 
 .websites {
     border: white solid 20px;

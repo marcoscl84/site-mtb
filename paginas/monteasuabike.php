@@ -42,7 +42,6 @@ if(isset($_REQUEST['envia'])){
                     <option name="rdModalidade" value="3">Downhill</option>
                     <option name="rdModalidade" value="4">E-MTB</option>
                 </select>
-                <br>
 
                 <select class="seleciona-marca" id="marc">
                                 <!--
@@ -55,10 +54,9 @@ if(isset($_REQUEST['envia'])){
                     <option>MARCA:</option>
                     <option name="rdMarca" value="1">Scott</option>
                     <option name="rdMarca" value="2">Specialized</option>
-                    <option name="rdMarca" value="3">Cannodale</option>
+                    <option name="rdMarca" value="3">Cannondale</option>
                     <option name="rdMarca" value="4">Trek</option>
                 </select>
-                <br>
 
                 <select class="seleciona-tipo" id="tip" style="display:none;" onchange="opcaoOculta()">
                                 <!--
@@ -69,13 +67,13 @@ if(isset($_REQUEST['envia'])){
                     <option>TIPO:</option>
                     <option name="rdTipo" value="1">Full Suspension</option>
                     <option name="rdTipo" value="2">Hard Tail</option>                    
-                </select>
-
-                <br>                
-                <div class="submit-botao">
-                    <input type="submit" id="envia" value="Enviar"/>
-                </div>            
+                </select>                       
             </div>    
+            
+            <div class="submit-botao">
+                <input type="submit" id="envia" value="Enviar"/>
+            </div>   
+
         </form>
         
         <!-- Exibe dados da busca no banco -->
