@@ -217,8 +217,8 @@ select:hover {
 }
 
 #envia:hover {
-    box-shadow: 2px 2px 5px rgb(14, 175, 250);
-    transition-duration: 1.5s;
+    box-shadow: 2px 2px 5px rgb(8, 121, 173);
+    transition-duration: 0.5s;
 }
 
 
