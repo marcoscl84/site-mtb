@@ -19,6 +19,7 @@ if(isset($_REQUEST['envia'])){
         $bke = "http://localhost/apresenta-bikes/".$bikeShow['foto'];
     }
 } 
+
 ?>
 
 <head>
@@ -85,14 +86,31 @@ if(isset($_REQUEST['envia'])){
         </form>
         
         <!-- Exibe dados da busca no banco -->
-        <div class="monte-a-sua">
-            <?php 
-                if(isset($bke)){
-                    ?> <img id="imageMonteSua" src="<?php echo $bke ?>" style="max-height:600px;"/> <?php
-                }
-            ?>
-        </div>
+        
+        <?php 
+            if(isset($bke)){
+                ?>  
+                <script>
+                    function modal("janModal", "imgModal", "btModal"){
+                        var modalJan=document.getElementById("janModal");
+                        var modalImg=document.getElementById("imgModal");
+                        var modalBt=document.getElementById("btModal");
 
+                        modalJan.style.display="block";
+                        modalImg.src=<?php echo $bke ?>;
+                        modalBt.onclick=funtion(){
+                            modalJan.style.display="none";
+                        }
+                    }
+                </script>
+                <div id="janModal" onload='modal("janModal", "imgModal", "btModal")'>         
+                    <span id="btModal">X</span>
+                    <img id="imgModal" src="<?php echo $bke ?>" style="max-height:500px;"/>
+                </div>
+                <?php
+            }
+        ?>
+        
         <br>
         <?php include "../footer.php"; ?>
     </div>

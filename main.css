@@ -10,7 +10,7 @@ header .container{
     top: 0;
     width: 100%;
     position: fixed;
-    z-index: 999;
+    z-index: 998;
 }
 header .logo{
     background-color: #00D9A3;
@@ -221,6 +221,35 @@ select:hover {
     transition-duration: 0.5s;
 }
 
+    /* JANELA MODAL */
+
+    #janModal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        padding-top: 100px;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        overflow: auto;
+    }
+    #imgModal {
+        margin: auto;
+        display: block;
+        width: 100%;
+        max-width: 800px;
+    }
+    #btModal {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
 .websites {
     border: white solid 20px;
@@ -231,6 +260,12 @@ select:hover {
 
 .links{
     margin: 20px;
+}
+
+.monte-a-sua {
+    display: flex;
+    justify-content: space-around;
+    
 }
  
 footer .footer{
