@@ -86,26 +86,25 @@ if(isset($_REQUEST['envia'])){
         </form>
         
         <!-- Exibe dados da busca no banco -->
-        
         <?php 
             if(isset($bke)){
                 ?>  
                 <script>
-                    function modal("janModal", "imgModal", "btModal"){
+                    function modal(<?php echo $bke; ?>){
                         var modalJan=document.getElementById("janModal");
                         var modalImg=document.getElementById("imgModal");
                         var modalBt=document.getElementById("btModal");
 
                         modalJan.style.display="block";
-                        modalImg.src=<?php echo $bke ?>;
+                        modalImg.src=<?php echo $bke; ?>;
                         modalBt.onclick=funtion(){
                             modalJan.style.display="none";
                         }
                     }
                 </script>
-                <div id="janModal" onload='modal("janModal", "imgModal", "btModal")'>         
+                <div id="janModal" onload='modal()'>         
                     <span id="btModal">X</span>
-                    <img id="imgModal" src="<?php echo $bke ?>" style="max-height:500px;"/>
+                    <img id="imgModal" src="<?php echo $bke; ?>"/>
                 </div>
                 <?php
             }
