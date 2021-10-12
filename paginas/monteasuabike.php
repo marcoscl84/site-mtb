@@ -38,10 +38,12 @@ if(isset($_REQUEST['envia'])){
     </script>
 </head>
 <body>
-    <?php include "../header.php"; ?>
+    <div class="cabecalho">
+        <?php include "../header.php"; ?>
+    </div>
     <div class="container-wout-header">
         <br>
-        
+       
         <form method="post" action="monteasuabike.php">
             <div class="seleciona-itens">
                 <select class="seleciona-modalidade" name="rdModalidade" id="mod" onchange="opcaoOculta()">
@@ -53,13 +55,7 @@ if(isset($_REQUEST['envia'])){
                 </select>
 
                 <select class="seleciona-marca" name="rdMarca" id="marc">
-                                <!--
-                                <img src="<?php //echo $url_base ?>/imagens/scott-sports-vector-logo.jpg" alt="Scott" style="width:100px"/>
-                                <img src="<?php //echo $url_base ?>/imagens/Specialized-logo-85B2A87B61-seeklogo.jpg" alt="SPZ" style="width:100px"/>
-                                <img src="<?php //echo $url_base ?>/imagens/cannondale-4c046f61-d1f7-4446-b2a6-d7fef877b85e.jpg" alt="Cannondale" style="width:100px"/>
-                                <img src="<?php //echo $url_base ?>/imagens/TREK-logo-A449338C0F-seeklogo.jpg" alt="Trek" style="width:100px"/>
-                                <br>
-                                -->
+                            
                     <option>MARCA:</option>
                     <option value="1">Scott</option>
                     <option value="2">Specialized</option>
@@ -68,11 +64,7 @@ if(isset($_REQUEST['envia'])){
                 </select>
 
                 <select class="seleciona-tipo" name="rdTipo"  id="tip" style="display:none;" onchange="opcaoOculta()">
-                                <!--
-                                <img src="<?php //echo $url_base ?>/imagens/posters-bicycle-types-vector-illustration.jpg" alt="FullSuspension" style="width:100px"/>
-                                <img src="<?php //echo $url_base ?>/imagens/posters-bicycle-types-vector-illustration ht.jpg" alt="HardTail" style="width:100px"/>
-                                <br>
-                                -->
+                                
                     <option value="0">TIPO:</option>
                     <option value="1">Full Suspension</option>
                     <option value="2">Hard Tail</option>                    
@@ -90,24 +82,25 @@ if(isset($_REQUEST['envia'])){
             if(isset($bke)){
                 ?>  
                 <script>
-                    function modal(<?php echo $bke; ?>){
+                    function modal("<?php echo $bke; ?>"){
                         var modalJan=document.getElementById("janModal");
                         var modalImg=document.getElementById("imgModal");
                         var modalBt=document.getElementById("btModal");
 
                         modalJan.style.display="block";
-                        modalImg.src=<?php echo $bke; ?>;
-                        modalBt.onclick=funtion(){
+                        modalImg.src="<?php echo $bke; ?>";
+                        modalBt.onclick=function(){
                             modalJan.style.display="none";
                         }
-                    }
+                    } //console.log("janModal");
                 </script>
-                <div id="janModal" onload='modal()'>         
+                
+                <div id="janModal" onload="modal()">
                     <span id="btModal">X</span>
                     <img id="imgModal" src="<?php echo $bke; ?>"/>
                 </div>
                 <?php
-            }
+            } 
         ?>
         
         <br>

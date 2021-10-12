@@ -2,8 +2,10 @@
     <link rel="stylesheet" href="../main.css"/>
 </head>
 <body>
-    <?php include "../header.php"; ?>
- 
+    <div class="cabecalho">
+        <?php include "../header.php"; ?>
+    </div>
+
     <div class="container-wout-header">
         <br>
         

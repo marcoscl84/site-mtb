@@ -51,8 +51,11 @@
     <title>MTB World</title>
 </head>
 <body class="bgimg-fixed" onload="showSlides(slideIndex = 0)">
-    <?php include "header.php"; ?>
     
+    <div class="cabecalho">
+        <?php include "header.php"; ?>
+    </div>
+
     <div class="container-wout-header">
         
         <!-- Slideshow container -->
@@ -74,9 +77,10 @@
         <div class="container-wout-slides-header-index">
     
             <div class="index-vid">
-                <iframe width="100%" height="600px" 
+                <iframe width="100%" height="450px" 
                 src="https://www.youtube.com/embed/X723bYcMtXI" title="YouTube video player" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
  
             <div class="spacetoshow-bgimage-fixed"></div>

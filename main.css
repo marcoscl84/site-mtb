@@ -1,3 +1,16 @@
+html, body{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    position: relative;
+}
+
+.cabecalho {
+    position: relative;
+}
+
 header .container{
     display: flex;
     flex-direction: row;
@@ -69,10 +82,7 @@ header .botoes a:link, a:visited {
  
 /*****/
  
-html, body{
-    margin: 0px;
-    padding: 0px;
-}
+
  
 .index-vid {
     background-color: white;
@@ -115,7 +125,7 @@ html, body{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    
+    position: relative;
 }
  
 .spacetoshow-bgimage-fixed {
@@ -274,4 +284,36 @@ footer .footer{
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
     width: 100%;  
+}
+
+@media (max-width: 628px) and (min-width: 521px) {
+    .container-wout-header{
+        position: absolute;
+        top: 128px;
+    }
+}
+
+@media (max-width: 520px) and (min-width: 441px) {
+    .container-wout-header{
+        position: absolute;
+        top: 168px;
+    }
+}
+
+@media (max-width: 440px) and (min-width: 401px){
+    .container-wout-header{
+        position: absolute;
+        top: 200px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container-wout-header{
+        position: absolute;
+        top: 250px;
+    }
+    header .container{
+        flex-direction: column;
+        text-align: center;
+    }
 }
