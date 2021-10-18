@@ -80,24 +80,12 @@ if(isset($_REQUEST['envia'])){
         <!-- Exibe dados da busca no banco -->
         <?php 
             if(isset($bke)){
-                ?>  
-                <script>
-                    function modal("<?php echo $bke; ?>"){
-                        var modalJan=document.getElementById("janModal");
-                        var modalImg=document.getElementById("imgModal");
-                        var modalBt=document.getElementById("btModal");
-
-                        modalJan.style.display="block";
-                        modalImg.src="<?php echo $bke; ?>";
-                        modalBt.onclick=function(){
-                            modalJan.style.display="none";
-                        }
-                    } //console.log("janModal");
-                </script>
-                
-                <div id="janModal" onload="modal()">
-                    <span id="btModal">X</span>
-                    <img id="imgModal" src="<?php echo $bke; ?>"/>
+                ?> 
+                <div class="container-imgBke">
+                    <div class="divImgBke" style="border:white solid 15px;"> 
+                        <img class="imgBke" src="<?php echo $bke; ?>" style="max-width:800px; 
+                        display:block; margin-left: auto; margin-right: auto;"/>
+                    </div>
                 </div>
                 <?php
             } 

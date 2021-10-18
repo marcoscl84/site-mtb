@@ -231,36 +231,6 @@ select:hover {
     transition-duration: 0.5s;
 }
 
-    /* JANELA MODAL */
-
-    #janModal {
-        display: none;
-        position: fixed;
-        z-index: 999;
-        padding-top: 100px;
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.7);
-        overflow: auto;
-    }
-    #imgModal {
-        margin: auto;
-        display: block;
-        width: 100%;
-        max-width: 800px;
-    }
-    #btModal {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: white;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
 .websites {
     border: white solid 20px;
     display: flex;
