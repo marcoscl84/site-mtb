@@ -142,9 +142,20 @@ header .botoes a:link, a:visited {
 }
 
 /* Página "fotos" */
+
+.thumbnail{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
 .fotos img {
     max-width: 100%;
-    display: block;
+    display: flexbox;
+    width: 350px;
+    margin: 20px;
 }
  
 .fotos img {
@@ -160,15 +171,46 @@ header .botoes a:link, a:visited {
 }
  
 .fotos:hover img {
-    -webkit-transform: scale(1.25);
+    -webkit-transform: scale(1.5);
     /* Safari and Chrome */
-    -moz-transform: scale(1.25);
+    -moz-transform: scale(1.5);
     /* Firefox */
-    -ms-transform: scale(1.25);
+    -ms-transform: scale(1.5);
     /* IE 9 */
-    -o-transform: scale(1.25);
+    -o-transform: scale(1.5);
     /* Opera */
-    transform: scale(1.25);
+    transform: scale(1.5);
+    border: solid white 10px;
+}
+
+.o-que-e-mtb {
+    position: relative;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #00006f;
+    text-justify: auto;
+    margin-top: 50px;
+    margin-left: 250px;
+    margin-right: 250px;
+}
+
+.modalidades {
+    position: relative;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #00006f;
+    text-justify: auto;
+    margin-top: 50px;
+    margin-left: 250px;
+    margin-right: 250px;
+}
+
+.modalidades, .o-que-e-mtb p{
+    text-align: justify;
+}
+
+.modalidades strong{
+    font-size: 20px;
 }
  
 /* Página "monte a sua bike" */
