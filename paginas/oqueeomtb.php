@@ -15,7 +15,7 @@
             <p>O mountain bike é praticado em estradas de terra, trilhas de fazendas, trilhas em montanhas e dentro de parques e até na cidade.</p>
             <p>O mountain bike é um esporte que envolve resistência, destreza, concentração e autossuficiência. Como é comum a prática do esporte em locais isolados, o aspecto de autossuficiência é importante para que o ciclista consiga realizar pequenos reparos em sua bicicleta, e concentração por ser um esporte que exige muito do psicológico para enfrentar os diversos obstáculos.</p>
         </div>
-        <!-- inserir imagem de fundo -->
+        
         <br>
         <?php include "../footer.php"; ?>
     </div>

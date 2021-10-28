@@ -6,7 +6,7 @@ if(isset($_REQUEST['envia'])){
     $rdMarca = $_REQUEST['rdMarca'];
     $rdTipo = $_REQUEST['rdTipo'];
 
-    if($rdTipo == 0){
+    if($rdTipo == ''){
         $rdTipo = 1;
     } 
 
@@ -28,7 +28,8 @@ if(isset($_REQUEST['envia'])){
         function opcaoOculta(){
             if(document.getElementById("mod").value == '1'){
                 document.getElementById("mod").style.display = 'flex';
-                document.getElementById("tip").style.display = 'flex';    
+                document.getElementById("tip").style.display = 'flex';  
+                document.getElementById("tip").required = true;
             }
             if(document.getElementById("mod").value != '1'){
                 document.getElementById("mod").style.display = 'flex';
@@ -46,26 +47,25 @@ if(isset($_REQUEST['envia'])){
        
         <form method="post" action="monteasuabike.php">
             <div class="seleciona-itens">
-                <select class="seleciona-modalidade" name="rdModalidade" id="mod" onchange="opcaoOculta()">
-                    <option>MODALIDADE:</option>
+                <select required class="seleciona-modalidade" name="rdModalidade" id="mod" onchange="opcaoOculta()">
+                    <option value="">MODALIDADE:</option>
                     <option value="1">XCO</option>
                     <option value="2">Enduro</option>
                     <option value="3">Downhill</option>
                     <option value="4">E-MTB</option>
                 </select>
 
-                <select class="seleciona-marca" name="rdMarca" id="marc">
+                <select required class="seleciona-marca" name="rdMarca" id="marc">
                             
-                    <option>MARCA:</option>
+                    <option value="">MARCA:</option>
                     <option value="1">Scott</option>
                     <option value="2">Specialized</option>
                     <option value="3">Cannondale</option>
                     <option value="4">Trek</option>
                 </select>
 
-                <select class="seleciona-tipo" name="rdTipo"  id="tip" style="display:none;" onchange="opcaoOculta()">
-                                
-                    <option value="0">TIPO:</option>
+                <select class="seleciona-tipo" name="rdTipo"  id="tip" style="display:none;" onchange="opcaoOculta()">              
+                    <option value="">TIPO:</option>
                     <option value="1">Full Suspension</option>
                     <option value="2">Hard Tail</option>                    
                 </select>                       
