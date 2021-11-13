@@ -7,10 +7,10 @@
         </a>
         <nav class="botoes">
             <a href="<?php echo $url_base ?>/paginas/oqueeomtb.php">O que é o MTB</a>
-            <a href="<?php echo $url_base ?>/paginas/modalidades.php">Modalidades</a>
             <a href="<?php echo $url_base ?>/paginas/fotos.php">Fotos</a>
             <a href="<?php echo $url_base ?>/paginas/videos.php">Vídeos</a>
             <a href="<?php echo $url_base ?>/paginas/monteasuabike.php">Monte a sua bike</a>
+            <a href="<?php echo $url_base ?>/paginas/classificados.php">classificados</a>
         </nav>
     </div>
 </header>

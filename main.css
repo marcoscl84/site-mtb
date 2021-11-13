@@ -192,24 +192,14 @@ header .botoes a:link, a:visited {
     margin-top: 50px;
     margin-left: 250px;
     margin-right: 250px;
+    margin-bottom: 30px;
 }
 
-.modalidades {
-    position: relative;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #00006f;
-    text-justify: auto;
-    margin-top: 50px;
-    margin-left: 250px;
-    margin-right: 250px;
-}
-
-.modalidades, .o-que-e-mtb p{
+.o-que-e-mtb p{
     text-align: justify;
 }
 
-.modalidades strong{
+.o-que-e-mtb strong{
     font-size: 20px;
 }
  
