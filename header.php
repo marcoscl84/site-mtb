@@ -11,6 +11,14 @@
             <a href="<?php echo $url_base ?>/paginas/videos.php">Vídeos</a>
             <a href="<?php echo $url_base ?>/paginas/monteasuabike.php">Monte a sua bike</a>
             <a href="<?php echo $url_base ?>/paginas/classificados.php">classificados</a>
+            <a href="<?php echo $url_base ?>/paginas/login.php">Login</a>
+           
+            <!-- LOGOUT
+            <div class="logout">
+                <button type="submit">LOGOUT</buttom>
+                <input type="hidden" name="enviaLogout" value="deslogado">
+            </div>
+             -->
         </nav>
     </div>
 </header>

@@ -1,44 +1,103 @@
-<?php
-
-    $conexao = mysqli_connect('localhost','root','');
-    $banco = mysqli_select_db($conexao,'apresenta-bike-classificado');
-    mysqli_set_charset($conexao,'utf8');
-    
-    if(isset($_REQUEST['updateButtom'])){
-        #
-    }
-
-    if(isset($_REQUEST['deleteButtom'])){
-        #
-    }
-
-?>
-
 <head>
     <link rel="stylesheet" href="../main.css"/>
 </head>
+ 
 <body>
     <div class="cabecalho">
         <?php include "../header.php"; ?>
     </div>
-
+ 
     <div class="container-wout-header">
-        
+ 
+<?php
+ 
+    include "../db-conexao/dbConnect.php";
+   
+    $usuarioLogado = 10;
+   
+    // INSERT OK
+    if(isset($_REQUEST['cadastraProduto'])){
+        $tipo = $_REQUEST['tipo'];
+        $marca = $_REQUEST['marca'];
+        $descricao = $_REQUEST['descricao'];
+       
+        $sqlInsert = "INSERT INTO produto (tipo, marca, descricao, id_usuario)
+        VALUES ('$tipo', '$marca', '$descricao', '$usuarioLogado')";
+        if (mysqli_query($conexao, $sqlInsert)) {
+            ?> <script> alert("Registro criado!"); </script> <?php
+        } else {
+            echo "Ooops... algo deu errado " . $sqlInsert;
+        }
+    }
+ 
+/*
+    // UPDATE
+    if(isset($_REQUEST['updateButton'])){
+       
+        $idUsuario = $_REQUEST['id_usuario'];
+        if($idUsuario /** === usuário que efetuou login * /){
+            $tipo = $_REQUEST['tipo'];
+            $marca = $_REQUEST['marca'];
+            $descricao = $_REQUEST['descricao'];
+       
+            $sqlUpdate = "UPDATE `usuarios` SET `name`='$tipo',
+            `idade`='$marca',`telefone`='$descricao' WHERE id=$idProd";
+            if (mysqli_query($conexao, $sqlUpdate)) {
+                ?> <script> alert("Registro alterado!"); </script> <?php
+            } else {
+                ?> <script> echo "Error: " . $sqlUpdate . "<br>" . mysqli_error(); </script> <?php
+            }
+        } else {
+            ?> <script> alert("Você não possui autorização para atualizar o produto!"); </script> <?php
+        }
+       
+    }
+ 
+    // DELETE
+    if(isset($_REQUEST['deleteButton'])){
+ 
+        if(/** LOGIN + $idUsuario* /){
+            $sqlDelete = "DELETE FROM produto WHERE id=$idProd";
+            if (mysqli_query($conexao, $sqlDelete)) {
+                ?> <script> alert("Registro Excluído!"); </script> <?php
+        } else {
+            ?> <!-- <script> echo "Error: " . $sqlDelete . "<br>" . mysqli_error(); </script>--> <?php
+        }
+           
+    }
+*/
+?>
+       
         <div class="corpo-classificados">
             <div class="tabela-classificados">  
-                
-            <div class="login-container">
-                <!-- criar modal pra fazer login ou criar usuário - botões deverão ficar sobre a lista -->
-                <button name='novoUsuario'>NOVO USUÁRIO</buttom>
-                <button name='loginButtom'>LOGIN</buttom>    
-                
-                <!-- Ao logar, mostrar o botão de divulgar -->
-                <button name='inserirProd'>Divulgar</buttom>
                
-            </div>
+                <!-- Ao logar, mostrar o botão de divulgar e deslogar -->
+                <?php // if(isset(/** LOGIN */)){ ?>      
+                   
+                    <!-- INSERT -->
+                    <form method="post" action="classificados.php">
+                        <div class="insert-button">
+                        </div>
+                        <div class="formulario-insercao" onclick="#">
+                            <h2>Insira os dados do produto</h2>
+                           
+                            <input type="text" name="tipo">
+                            <label>Tipo</label><br>
+                            <input type="text" name="marca">
+                            <label>Marca</label><br>
+                            <input type="text" name="descricao">
+                            <label>Descrição</label><br>
+                           
+                            <button type="submit">Enviar</button>
+                            <input type="hidden" name="cadastraProduto" value="<?php echo $usuarioLogado ?>">
+                        </div>
+                    </form>
+                <?php // } ?>
+               
 <?php            
-                /***** ITERAÇÃO DB *****/
+                /***** SELECT - ITERAÇÃO DB *****/
                 $classificBusca = mysqli_query($conexao, "SELECT * FROM produto ORDER BY tipo");
+                echo "<h1>CLASSIFICADOS</h1>";
                 echo "<table class='classificTable'>";
                     echo "<tr>";
                         echo "<th>PRODUTO</th>";
@@ -48,38 +107,37 @@
 ?>                    
                     <form method="post" action="classificados.php">
 <?php
-                    while($linha = mysqli_fetch_assoc($classificBusca)) {
-                        echo "<tr>";
-                            $idProd = (int)$linha['id'];
-                            $id_usuario = (int)$linha['id_usuario'];
-                            $prod = $linha['tipo'];
-                            $modelo = $linha['marca'];
-                            $descr = $linha['descricao'];
-
-                            echo "<td>" . $linha['tipo'] . "</td>";
-                            echo "<td>" . $linha['marca'] . "</td>";
-                            echo "<td>" . $linha['descricao'] . "</td>";
-                            echo "<td>";
-                                // ao clicar deve receber o telefone do proprietário em um modal
-                                echo "<button name='interesse'>Estou interessado</buttom>";
-                            echo "</td>";
-                    //      if(isset(/** LOGIN */)){
-                                echo "<td>";
-                                    echo "<button name='updateButtom'>Atualizar</buttom>";
+                        while($linha = mysqli_fetch_assoc($classificBusca)) {
+                            echo "<tr>";
+                                $idProd = (int)$linha['id'];
+                                $id_usuario = (int)$linha['id_usuario'];
+                                $tipo = $linha['tipo'];
+                                $marca = $linha['marca'];
+                                $descricao = $linha['descricao'];
+ 
+                                echo "<td>" . $tipo . "</td>";
+                                echo "<td>" . $marca . "</td>";
+                                echo "<td>" . $descricao . "</td>";
+                               
+/*                              echo "<td>";
+                                    // ao clicar deve receber o telefone do proprietário em um modal
+                                    echo "<button name='interesse'>Estou interessado</buttom>";
                                 echo "</td>";
-                                echo "<td>";
-                                    echo "<button name='deleteButtom'>Excluir</buttom>";
-                                echo "</td>";
-                    //        }
-?>
-                            <input type="hidden" name="idProd" value="<?php echo $idProd ?>">
-<?php               
-                        echo "</tr>";
-                    }
+                                if(isset(/** LOGIN * /)){
+                                    echo "<td>";
+                                        echo "<button type='submit'>Atualizar</buttom>";
+                                        echo '<input type="hidden" name="updateButton" value="<?php echo $idProd ?>">';
+                                    echo "</td>";
+                                    echo "<td>";
+                                        echo "<button type='submit'>Excluir</buttom>";
+                                        echo '<input type="hidden" name="deleteButton" value="<?php echo $idProd ?>">';
+                                    echo "</td>";
+                                }              
+*/
+                            echo "</tr>";
+                        }
 ?>
                     </form>
-<?php
-?>
                 </table>
             </div>
         </div>
