@@ -52,20 +52,18 @@
         }
        
     }
- 
+*/
     // DELETE
     if(isset($_REQUEST['deleteButton'])){
+        $idProd = $_REQUEST['idProduto'];
  
-        if(/** LOGIN + $idUsuario* /){
-            $sqlDelete = "DELETE FROM produto WHERE id=$idProd";
-            if (mysqli_query($conexao, $sqlDelete)) {
-                ?> <script> alert("Registro Excluído!"); </script> <?php
+        $sqlDelete = "DELETE FROM produto WHERE id=$idProd";
+        if (mysqli_query($conexao, $sqlDelete)) {
+            ?> <script> alert("Registro Excluído!"); </script> <?php
         } else {
-            ?> <!-- <script> echo "Error: " . $sqlDelete . "<br>" . mysqli_error(); </script>--> <?php
-        }
-           
+            ?> <script> alert("oooops! Registro não excluído"); </script> <?php
+        }    
     }
-*/
 ?>
        
         <div class="corpo-classificados">
@@ -104,40 +102,39 @@
                         echo "<th>MARCA</th>";
                         echo "<th>DESCRIÇÃO</th>";
                     echo "</tr>";
-?>                    
-                    <form method="post" action="classificados.php">
-<?php
-                        while($linha = mysqli_fetch_assoc($classificBusca)) {
-                            echo "<tr>";
-                                $idProd = (int)$linha['id'];
-                                $id_usuario = (int)$linha['id_usuario'];
-                                $tipo = $linha['tipo'];
-                                $marca = $linha['marca'];
-                                $descricao = $linha['descricao'];
- 
-                                echo "<td>" . $tipo . "</td>";
-                                echo "<td>" . $marca . "</td>";
-                                echo "<td>" . $descricao . "</td>";
-                               
+
+                    while($linha = mysqli_fetch_assoc($classificBusca)) {
+                        echo "<tr>";
+                            $idProd = (int)$linha['id'];
+                            $id_usuario = (int)$linha['id_usuario'];
+                            $tipo = $linha['tipo'];
+                            $marca = $linha['marca'];
+                            $descricao = $linha['descricao'];
+
+                            echo "<td>" . $tipo . "</td>";
+                            echo "<td>" . $marca . "</td>";
+                            echo "<td>" . $descricao . "</td>";
+                            
 /*                              echo "<td>";
-                                    // ao clicar deve receber o telefone do proprietário em um modal
-                                    echo "<button name='interesse'>Estou interessado</buttom>";
-                                echo "</td>";
-                                if(isset(/** LOGIN * /)){
-                                    echo "<td>";
-                                        echo "<button type='submit'>Atualizar</buttom>";
-                                        echo '<input type="hidden" name="updateButton" value="<?php echo $idProd ?>">';
-                                    echo "</td>";
-                                    echo "<td>";
-                                        echo "<button type='submit'>Excluir</buttom>";
-                                        echo '<input type="hidden" name="deleteButton" value="<?php echo $idProd ?>">';
-                                    echo "</td>";
-                                }              
-*/
-                            echo "</tr>";
-                        }
+                                // ao clicar deve receber o telefone do proprietário em um modal
+                                echo "<button name='interesse'>Estou interessado</buttom>";
+                            echo "</td>";
+                
+                            echo "<td>";
+                                echo "<button type='submit'>Atualizar</buttom>";
+                                echo '<input type="hidden" name="updateButton" value="<?php echo $idProd ?>">';
+                            echo "</td>";
+*/                              echo "<td>";
+                                ?> <form method="post" action="classificados.php"> <?php
+                                    echo '<button type="submit" name="deleteButton">Excluir</buttom>';
+                                    echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
+                                    echo " ".$linha['id'];
+                                ?> </form> <?php
+                            echo "</td>";
+                        echo "</tr>";
+                    }
 ?>
-                    </form>
+                    
                 </table>
             </div>
         </div>
