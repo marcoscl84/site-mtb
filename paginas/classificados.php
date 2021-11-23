@@ -26,33 +26,26 @@
         if (mysqli_query($conexao, $sqlInsert)) {
             ?> <script> alert("Registro criado!"); </script> <?php
         } else {
-            echo "Ooops... algo deu errado " . $sqlInsert;
+            ?> <script> alert("Oooops! Não deu certo..."); </script> <?php
         }
     }
  
-/*
     // UPDATE
-    if(isset($_REQUEST['updateButton'])){
-       
-        $idUsuario = $_REQUEST['id_usuario'];
-        if($idUsuario /** === usuário que efetuou login * /){
-            $tipo = $_REQUEST['tipo'];
-            $marca = $_REQUEST['marca'];
-            $descricao = $_REQUEST['descricao'];
-       
-            $sqlUpdate = "UPDATE `usuarios` SET `name`='$tipo',
-            `idade`='$marca',`telefone`='$descricao' WHERE id=$idProd";
-            if (mysqli_query($conexao, $sqlUpdate)) {
-                ?> <script> alert("Registro alterado!"); </script> <?php
-            } else {
-                ?> <script> echo "Error: " . $sqlUpdate . "<br>" . mysqli_error(); </script> <?php
-            }
+    if(isset($_REQUEST['updateForm'])){
+        $idProd = $_REQUEST['idProduto'];
+        $tipo = $_REQUEST['tipo'];
+        $marca = $_REQUEST['marca'];
+        $descricao = $_REQUEST['descricao'];
+    
+        $sqlUpdate = "UPDATE `produto` SET `tipo`='$tipo',
+        `marca`='$marca',`descricao`='$descricao' WHERE id=$idProd";
+        if (mysqli_query($conexao, $sqlUpdate)) {
+            ?> <script> alert("Registro alterado!"); </script> <?php
         } else {
-            ?> <script> alert("Você não possui autorização para atualizar o produto!"); </script> <?php
-        }
-       
+            ?> <script> alert("Oooops! Não deu certo...") </script> <?php
+        }       
     }
-*/
+
     // DELETE
     if(isset($_REQUEST['deleteButton'])){
         $idProd = $_REQUEST['idProduto'];
@@ -69,14 +62,10 @@
         <div class="corpo-classificados">
             <div class="tabela-classificados">  
                
-                <!-- Ao logar, mostrar o botão de divulgar e deslogar -->
-                <?php // if(isset(/** LOGIN */)){ ?>      
-                   
-                    <!-- INSERT -->
+                <!-- INSERT -->
+                <?php if(!isset($_REQUEST['updateId'])){ ?>      
                     <form method="post" action="classificados.php">
-                        <div class="insert-button">
-                        </div>
-                        <div class="formulario-insercao" onclick="#">
+                        <div class="formulario-insercao">
                             <h2>Insira os dados do produto</h2>
                            
                             <input type="text" name="tipo">
@@ -87,13 +76,34 @@
                             <label>Descrição</label><br>
                            
                             <button type="submit">Enviar</button>
-                            <input type="hidden" name="cadastraProduto" value="<?php echo $usuarioLogado ?>">
+                            <input type="hidden" name="cadastraProduto" value="cadastra">
                         </div>
                     </form>
-                <?php // } ?>
+                <?php } ?>
                
+                <!-- UPDATE -->
+                <?php if(isset($_REQUEST['updateId'])){ ?>  
+                    <form method="post" action="classificados.php">
+                        <?php $idProd = $_REQUEST['idProduto']; ?>
+                        
+                        <div class="formulario-insercao">
+                            <h2>ATUALIZAR DADOS</h2>
+                            
+                            <input type="text" name="tipo">
+                            <label>Tipo</label><br>
+                            <input type="text" name="marca">
+                            <label>Marca</label><br>
+                            <input type="text" name="descricao">
+                            <label>Descrição</label><br>
+                           
+                            <button type="submit" name="updateForm">Enviar</button>
+                            <input type="text" name="idProduto" value="<?php echo $_REQUEST['idProduto'] ?>">
+                        </div>
+                    </form>
+                <?php } ?>
+
 <?php            
-                /***** SELECT - ITERAÇÃO DB *****/
+                /***** SELECT *****/
                 $classificBusca = mysqli_query($conexao, "SELECT * FROM produto ORDER BY tipo");
                 echo "<h1>CLASSIFICADOS</h1>";
                 echo "<table class='classificTable'>";
@@ -119,18 +129,20 @@
                                 // ao clicar deve receber o telefone do proprietário em um modal
                                 echo "<button name='interesse'>Estou interessado</buttom>";
                             echo "</td>";
-                
+*/                
+                            ?> <form method="post" action="classificados.php"> <?php
                             echo "<td>";
-                                echo "<button type='submit'>Atualizar</buttom>";
-                                echo '<input type="hidden" name="updateButton" value="<?php echo $idProd ?>">';
+                                echo '<button type="submit" name="updateId">Atualizar</buttom>';
+                                echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
+                                echo " ".$linha['id'];
                             echo "</td>";
-*/                              echo "<td>";
-                                ?> <form method="post" action="classificados.php"> <?php
+                            echo "<td>";
+                                
                                     echo '<button type="submit" name="deleteButton">Excluir</buttom>';
                                     echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
                                     echo " ".$linha['id'];
-                                ?> </form> <?php
                             echo "</td>";
+                            ?> </form> <?php
                         echo "</tr>";
                     }
 ?>
