@@ -2,15 +2,11 @@ html, body{
     margin: 0px;
     padding: 0px;
 }
-
+ 
 body{
     position: relative;
 }
-
-.cabecalho {
-    position: relative;
-}
-
+ 
 header .container{
     display: flex;
     flex-direction: row;
@@ -82,7 +78,7 @@ header .botoes a:link, a:visited {
  
 /*****/
  
-
+ 
  
 .index-vid {
     background-color: white;
@@ -96,14 +92,14 @@ header .botoes a:link, a:visited {
     width: 100%;
     height: 100%;
 }
-
+ 
 .container-wout-slides-header-index {
     position: relative;
     top: 0px;
     width: 100%;
     height: 100%;
 }
-
+ 
 .videos-container > .container-iframe-youtube {
     position: relative;
     display: block;
@@ -140,9 +136,9 @@ header .botoes a:link, a:visited {
     width: 100%;
     height: fit-content;
 }
-
+ 
 /* Página "fotos" */
-
+ 
 .thumbnail{
     display: flex;
     flex-wrap: wrap;
@@ -150,7 +146,7 @@ header .botoes a:link, a:visited {
     justify-content: center;
     margin-top: 50px;
 }
-
+ 
 .fotos img {
     max-width: 100%;
     display: flexbox;
@@ -182,7 +178,7 @@ header .botoes a:link, a:visited {
     transform: scale(1.5);
     border: solid white 10px;
 }
-
+ 
 .o-que-e-mtb {
     position: relative;
     text-align: center;
@@ -192,14 +188,24 @@ header .botoes a:link, a:visited {
     margin-top: 50px;
     margin-left: 250px;
     margin-right: 250px;
-    margin-bottom: 30px;
 }
-
-.o-que-e-mtb p{
+ 
+.modalidades {
+    position: relative;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #00006f;
+    text-justify: auto;
+    margin-top: 50px;
+    margin-left: 250px;
+    margin-right: 250px;
+}
+ 
+.modalidades, .o-que-e-mtb p{
     text-align: justify;
 }
-
-.o-que-e-mtb strong{
+ 
+.modalidades strong{
     font-size: 20px;
 }
  
@@ -221,31 +227,31 @@ select {
     cursor: pointer;
     border: solid black 1px;
     margin-bottom: 20px;
-    
+   
 }
  
 .seleciona-itens {
-    width: auto; 
+    width: auto;
     background: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center
 }
-
+ 
 .seleciona-modalidade .seleciona-marca .seleciona-tipo {
     height: auto;
 }
-
+ 
 select:hover {
     box-shadow: 4px 4px 8px black;
     transition-duration: 1s;
 }
-
+ 
 .submit-botao {
     text-align: center;
 }
-
+ 
 #envia {
     background-color: cornflowerblue;
     color: white;
@@ -257,27 +263,27 @@ select:hover {
     padding: 10px 40px;
     cursor: pointer;
 }
-
+ 
 #envia:hover {
     box-shadow: 2px 2px 5px rgb(8, 121, 173);
     transition-duration: 0.5s;
 }
-
+ 
 .websites {
     border: white solid 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+ 
 .links{
     margin: 20px;
 }
-
+ 
 .monte-a-sua {
     display: flex;
     justify-content: space-around;
-    
+   
 }
  
 footer .footer{
@@ -287,28 +293,28 @@ footer .footer{
     background-color: white;
     width: 100%;  
 }
-
+ 
 @media (max-width: 628px) and (min-width: 521px) {
     .container-wout-header{
         position: absolute;
         top: 128px;
     }
 }
-
+ 
 @media (max-width: 520px) and (min-width: 441px) {
     .container-wout-header{
         position: absolute;
         top: 168px;
     }
 }
-
+ 
 @media (max-width: 440px) and (min-width: 401px){
     .container-wout-header{
         position: absolute;
         top: 200px;
     }
 }
-
+ 
 @media (max-width: 400px) {
     .container-wout-header{
         position: absolute;
