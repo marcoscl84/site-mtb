@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="../main.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
  
 <body>
@@ -9,6 +10,28 @@
     </div>
  
     <div class="container-wout-header">
+<!--
+    <!-- Modal
+    <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
 <?php
  
     include "../db-conexao/dbConnect.php";
@@ -64,24 +87,24 @@
                
                 <!-- INSERT -->
                 <?php if(!isset($_REQUEST['updateId'])){ ?>      
-                   
+               
                     <form method="post" action="classificados.php">
-                        <div class="formulario-insercao d-grid gap-0 col-6 mx-auto">
-                            <h2 style="font-family:Copperplate Gothic; text-align:center;">INSIRA OS DADOS DO PRODUTO</h2>
+                        <div class="formulario-insercao d-grid gap-0 col-6 mx-auto" style="padding:20px; box-shadow: 10px 10px 8px #00D9A3; border-radius:10px;">
+                            <h2 style="font-family:Copperplate Gothic; text-align:center; margin:20px;">INSIRA OS DADOS DO PRODUTO</h2>
                            
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-0">
                                 <input type="text" name="tipo" class="form-control" id="floatingInput" placeholder="TIPO">
                                 <label>Tipo</label><br>
                             </div>
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-0">
                                 <input type="text" name="marca" class="form-control" id="floatingInput" placeholder="MARCA">
                                 <label>Marca</label><br>
                             </div>
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-0">
                                 <input type="text" name="descricao" class="form-control" id="floatingInput" placeholder="DESCRIÇÃO">
                                 <label>Descrição</label><br>
                             </div>
-                            <div class="d-grid gap-2 col-4 mx-auto">                              
+                            <div class="d-grid gap-2 col-4 mx-auto" style="margin:20px;">                              
                                 <button type="submit" class="btn btn-outline-dark">Enviar</button>
                                 <input type="hidden" name="cadastraProduto" value="cadastra">
                             </div>
@@ -94,73 +117,82 @@
                     <form method="post" action="classificados.php">
                         <?php $idProd = $_REQUEST['idProduto']; ?>
                        
-                        <div class="formulario-insercao">
-                            <h2 style="font-family:Copperplate Gothic; text-align:center;">ATUALIZAR DADOS</h2>
+                        <div class="formulario-insercao d-grid gap-0 col-6 mx-auto" style="padding:20px; box-shadow: 10px 10px 8px #00D9A3; border-radius:10px;">
+                            <h2 style="font-family:Copperplate Gothic; text-align:center; margin:20px;">ATUALIZE OS DADOS DO PRODUTO</h2>
                            
-                            <input type="text" name="tipo">
-                            <label>Tipo</label><br>
-                            <input type="text" name="marca">
-                            <label>Marca</label><br>
-                            <input type="text" name="descricao">
-                            <label>Descrição</label><br>
+                            <div class="form-floating mb-0">
+                                <input type="text" name="tipo" class="form-control" id="floatingInput" placeholder="TIPO">
+                                <label>Tipo</label><br>
+                            </div>
+                            <div class="form-floating mb-0">
+                                <input type="text" name="marca" class="form-control" id="floatingInput" placeholder="MARCA">
+                                <label>Marca</label><br>
+                            </div>
+                            <div class="form-floating mb-0">
+                                <input type="text" name="descricao" class="form-control" id="floatingInput" placeholder="DESCRIÇÃO">
+                                <label>Descrição</label><br>
+                            </div>
                            
-                            <button type="submit" name="updateForm">Enviar</button>
-                            <input type="hidden" name="idProduto" value="<?php echo $_REQUEST['idProduto'] ?>">
+                            <div class="d-grid gap-2 col-4 mx-auto" style="margin:20px;">
+                                <button type="submit" class="btn btn-outline-dark" name="updateForm">Enviar</button>
+                                <input type="hidden" name="idProduto" value="<?php echo $_REQUEST['idProduto'] ?>">
+                            </div>
                         </div>
                     </form>
                 <?php } ?>
  
-<?php            
-                /***** SELECT *****/
-                $classificBusca = mysqli_query($conexao, "SELECT * FROM produto ORDER BY tipo");
-                echo "<h1 style='text-align:center; font-family: Copperplate Gothic, Helvetica, sans-serif;'>CLASSIFICADOS</h1>";
-                echo "<table class='table'>";
-                    echo '<thead class="table-dark">';
-                        echo "<th class='col-2'></th>";
-                        echo "<th class='col-2'>PRODUTO</th>";
-                        echo "<th class='col-2'>MARCA</th>";
-                        echo "<th class='col-2'>DESCRIÇÃO</th>";
-                        echo "<th class='col-1'></th>";
-                        echo "<th class='col-1'></th>";
-                        echo "<th class='col-2'></th>";
-                        
-                    echo "</thead>";
+           
+                <!-- SELECT -->
+                <div class="container">
  
-                    while($linha = mysqli_fetch_assoc($classificBusca)) {
-                        echo "<tr>";
-                            $idProd = (int)$linha['id'];
-                            $id_usuario = (int)$linha['id_usuario'];
-                            $tipo = $linha['tipo'];
-                            $marca = $linha['marca'];
-                            $descricao = $linha['descricao'];
- 
-                            echo "<td class='col-2'></td>";
-                            echo "<td class='col-2'>" . $tipo . "</td>";
-                            echo "<td class='col-2'>" . $marca . "</td>";
-                            echo "<td class='col-2'>" . $descricao . "</td>";
+<?php                
+                    $classificBusca = mysqli_query($conexao, "SELECT * FROM produto ORDER BY tipo");
+                    echo "<h1 style='text-align:center; font-family: Copperplate Gothic, Helvetica, sans-serif; margin:30px 0px 20px'>CLASSIFICADOS</h1>";
+                    echo "<table class='table'>";
+                        echo '<thead class="table-dark">';
                            
-/*                              echo "<td>";
-                                // ao clicar deve receber o telefone do proprietário em um modal
-                                echo "<button name='interesse'>Estou interessado</buttom>";
-                            echo "</td>";
-*/                
-                            ?> <form method="post" action="classificados.php"> <?php
-                            echo "<td class='col-1'>";
-                                echo '<button type="submit" name="updateId" class="btn btn-secondary">Atualizar</buttom>';
-                                echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
-                            echo "</td>";
-                            echo "<td class='col-1'>";
-                                echo '<button type="submit" name="deleteButton" class="btn btn-secondary">Excluir</buttom>';
-                                echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
-                            echo "</td>";
-                            ?> </form> <?php
-                            echo "<td class='col-2'></td>";
-                            
-                        echo "</tr>";
-                    }
+                            echo "<th>PRODUTO</th>";
+                            echo "<th>MARCA</th>";
+                            echo "<th>DESCRIÇÃO</th>";
+                            echo "<th></th>";
+                            echo "<th></th>";
+                           
+                        echo "</thead>";
+ 
+                        while($linha = mysqli_fetch_assoc($classificBusca)) {
+                            echo "<tr>";
+                                $idProd = (int)$linha['id'];
+                                $id_usuario = (int)$linha['id_usuario'];
+                                $tipo = $linha['tipo'];
+                                $marca = $linha['marca'];
+                                $descricao = $linha['descricao'];
+ 
+                                echo "<td>" . $tipo . "</td>";
+                                echo "<td>" . $marca . "</td>";
+                                echo "<td>" . $descricao . "</td>";
+                               
+    /*                              echo "<td>";
+                                    // ao clicar deve receber o telefone do proprietário em um modal
+                                    echo "<button name='interesse'>Estou interessado</buttom>";
+                                echo "</td>";
+    */                
+                                ?> <form method="post" action="classificados.php"> <?php
+                                echo "<td>";
+                                    echo '<button type="submit" name="updateId" class="btn btn-secondary">Atualizar</buttom>';
+                                    echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
+                                echo "</td>";
+                                echo "<td>";                    
+                                    echo '<button type="submit" name="deleteButton" class="btn btn-secondary"
+                                    data-toggle="modal" data-target="#modalExemplo">Excluir</buttom>';
+                                    echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
+                                echo "</td>";
+                                ?> </form> <?php
+                               
+                            echo "</tr>";
+                        }
+                    echo "</table>";
 ?>
-                   
-                </table>
+                </div>
             </div>
         </div>
         <br>

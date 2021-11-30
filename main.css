@@ -7,6 +7,11 @@ body{
     position: relative;
 }
  
+.cabecalho{
+   
+    min-width: 100%;
+}
+/*
 header .container{
     display: flex;
     flex-direction: row;
@@ -20,7 +25,8 @@ header .container{
     width: 100%;
     position: fixed;
     z-index: 998;
-}
+} */
+ 
 header .logo{
     background-color: #00D9A3;
 }
@@ -77,8 +83,6 @@ header .botoes a:link, a:visited {
         }
  
 /*****/
- 
- 
  
 .index-vid {
     background-color: white;
@@ -294,6 +298,12 @@ footer .footer{
     width: 100%;  
 }
  
+.formulario-insercao{
+    padding: 20px;
+    box-shadow: #00D9A3;
+    border-radius: 10px;
+}
+ 
 @media (max-width: 628px) and (min-width: 521px) {
     .container-wout-header{
         position: absolute;
@@ -320,8 +330,9 @@ footer .footer{
         position: absolute;
         top: 250px;
     }
+    /*
     header .container{
         flex-direction: column;
         text-align: center;
-    }
+    }*/
 }
