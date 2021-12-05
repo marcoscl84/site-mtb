@@ -1,29 +1,41 @@
 <head>
     <link rel="stylesheet" href="../main.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
  
 <body>
-    <div class="cabecalho">
-        <?php include "../header.php"; ?>
-    </div>
- 
-    <div class="container-wout-header">
-<!--
-    <!-- Modal
-    <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <!-- SCRIPT MODAL -->
+    <script>
+        funcaoExcluir(){
+            var myModal = document.getElementById('janelaModal');
+            var myInput = document.getElementById('deleteButton');
+
+            myModal.addEventListener('shown.bs.modal', function () {
+                myInput.focus();
+            })
+        }
+
+    </script>
+
+    <!----- MODAL EXCLUIR ------->
+    <div class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                    <h5 class="modal-title">Título do modal</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                
                 <div class="modal-body">
-                    ...
+                    <p>Texto do corpo do modal, é aqui.</p>
                 </div>
+                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     <button type="button" class="btn btn-primary">Salvar mudanças</button>
@@ -31,7 +43,13 @@
             </div>
         </div>
     </div>
--->
+
+    <div class="cabecalho">
+        <?php include "../header.php"; ?>
+    </div>
+ 
+    <div class="container-wout-header">
+ 
 <?php
  
     include "../db-conexao/dbConnect.php";
@@ -68,20 +86,23 @@
             ?> <script> alert("Oooops! Não deu certo...") </script> <?php
         }      
     }
- 
+
     // DELETE
-    if(isset($_REQUEST['deleteButton'])){
-        $idProd = $_REQUEST['idProduto'];
- 
-        $sqlDelete = "DELETE FROM produto WHERE id=$idProd";
-        if (mysqli_query($conexao, $sqlDelete)) {
-            ?> <script> alert("Registro Excluído!"); </script> <?php
-        } else {
-            ?> <script> alert("oooops! Registro não excluído"); </script> <?php
-        }    
+    if(isset($_REQUEST['acao'])){
+        if($_REQUEST['deletar'] == 'excluir'){
+            $idDelete = $_REQUEST['acao'];
+
+            $sqlDelete = "DELETE FROM produto WHERE id=$idDelete";
+            if (mysqli_query($conexao, $sqlDelete)) {
+                ?> <script> alert("Registro Excluído!"); </script> <?php
+            } else {
+                ?> <script> alert("oooops! Registro não excluído"); </script> <?php
+            }  
+        }  
     }
+
 ?>
-       
+ 
         <div class="corpo-classificados">
             <div class="tabela-classificados">  
                
@@ -177,21 +198,25 @@
                                 echo "</td>";
     */                
                                 ?> <form method="post" action="classificados.php"> <?php
-                                echo "<td>";
-                                    echo '<button type="submit" name="updateId" class="btn btn-secondary">Atualizar</buttom>';
-                                    echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
-                                echo "</td>";
-                                echo "<td>";                    
-                                    echo '<button type="submit" name="deleteButton" class="btn btn-secondary"
-                                    data-toggle="modal" data-target="#modalExemplo">Excluir</buttom>';
-                                    echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
-                                echo "</td>";
+                                    // UPDATE BUTTON
+                                    echo "<td>";
+                                        echo '<button type="submit" name="updateId" class="btn btn-secondary" 
+                                        data-toggle="modal" data-target="#modalExemplo">Atualizar</buttom>';
+                                        echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
+                                    echo "</td>";
                                 ?> </form> <?php
-                               
-                            echo "</tr>";
-                        }
-                    echo "</table>";
-?>
+ 
+                                // DELETE BUTTON
+                                echo "<td>";
+?>                                  <form method="get" action="classificados.php">
+                                        <a class="btn btn-danger" href="classificados.php?acao=<?php echo $idProd ?>&deletar=excluir" 
+                                        onclick="return confirm('Tem certeza que deseja excluir seu anúncio?');">Excluir</a> 
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+
                 </div>
             </div>
         </div>
