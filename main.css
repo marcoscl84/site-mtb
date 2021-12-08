@@ -8,24 +8,8 @@ body{
 }
  
 .cabecalho{
-   
     min-width: 100%;
 }
-/*
-header .container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #00D9A3;
-    border-bottom: 5px solid white;
-    right: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
-    position: fixed;
-    z-index: 998;
-} */
  
 header .logo{
     background-color: #00D9A3;
@@ -46,43 +30,6 @@ header .botoes a:link, a:visited {
     text-decoration: none;
     display: inline-block;
 }
- 
-/* Slideshow */
- 
-* {box-sizing:border-box}
- 
-        /* Slideshow container */
-        .slideshow-container {
-        position: relative;
-        margin: auto;
-        top: 0px;
-        }
- 
-        /* On hover, add a black background color with a little bit see-through */
-        .prev:hover, .next:hover {
-        background-color: rgba(0,0,0,0.8);
-        }
- 
-        /* Fading animation */
-        .fade {
-        -webkit-animation-name: fade;
-        -webkit-animation-duration: 1s;
-        animation-name: fade;
-        animation-duration: 1s;
-        background-color: white;
-        }
- 
-        @-webkit-keyframes fade {
-        from {opacity: .4}
-        to {opacity: 1}
-        }
- 
-        @keyframes fade {
-        from {opacity: .4}
-        to {opacity: 1}
-        }
- 
-/*****/
  
 .index-vid {
     background-color: white;

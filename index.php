@@ -6,43 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
     <script>
-        
-        var slideIndex = 1;
-        showSlides(slideIndex); 
- 
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            
-            // determina que ao estourar o array por um lado, irá para a outra ponta.
-            if (n > slides.length) {slideIndex = 1} 
-            if (n < 1) {slideIndex = slides.length} 
- 
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
 
-            slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += "active";
-        }
- 
-        // Automatic Slideshow
-        
-        var slideIndex = 0;
-        showSlides();
- 
-        function showSlides() {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}
- 
-            slides[slideIndex-1].style.display = "block";
-            setTimeout(showSlides, 5000); // Change image every 5 seconds
-        }
+        $('.carousel').carousel({
+            interval: 2000
+        })
         
     </script>
  
@@ -50,30 +17,42 @@
  
     <title>MTB World</title>
 </head>
-<body class="bgimg-fixed" onload="showSlides(slideIndex = 0)">
-    
+
+<body class="bgimg-fixed">    
+
     <div class="cabecalho">
         <?php include "header.php"; ?>
     </div>
 
     <div class="container-wout-header">
         
-        <!-- Slideshow container -->
-        <div class="slideshow-container" style="z-index: 992">
-            <!-- Full-width images -->
-            <div class="mySlides fade">
-                <img src="imagens/DSCN0747-2.jpg" style="width:100%">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="border-bottom:white solid 5px;">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img class="d-block w-100" src="imagens/DSCN0747-2.jpg" alt="Primeiro Slide">
+                </div>
+                <div class="carousel-item">
+                <img class="d-block w-100" src="imagens/20210408_174856_HDR-2.jpg" alt="Segundo Slide">
+                </div>
+                <div class="carousel-item">
+                <img class="d-block w-100" src="imagens/20200808_162240-2.jpg" alt="Terceiro Slide">
+                </div>
             </div>
-
-            <div class="mySlides fade">
-                <img src="imagens/20210408_174856_HDR-2.jpg" style="width:100%">
-            </div>
-
-            <div class="mySlides fade">
-                <img src="imagens/20200808_162240-2.jpg" style="width:100%">
-            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+            </a>
         </div>
-    
+
         <div class="container-wout-slides-header-index">
     
             <div class="index-vid">
