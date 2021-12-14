@@ -28,7 +28,7 @@ if(isset($_REQUEST['envia'])){
         function opcaoOculta(){
             if(document.getElementById("mod").value == '1'){
                 document.getElementById("mod").style.display = 'flex';
-                document.getElementById("tip").style.display = 'flex';  
+                document.getElementById("tip").style.display = 'flex'; 
                 document.getElementById("tip").required = true;
             }
             if(document.getElementById("mod").value != '1'){

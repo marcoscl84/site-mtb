@@ -5,6 +5,8 @@ html, body{
  
 body{
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
 }
  
 .cabecalho{
@@ -19,7 +21,7 @@ header .botoes{
     font-family: Copperplate Gothic, Helvetica, sans-serif;
 }
 header a:hover{
-    color: black;
+    color: rgb(180, 178, 178);
     text-decoration: none;  
 }
 header .botoes a:link, a:visited {
@@ -73,6 +75,8 @@ header .botoes a:link, a:visited {
     background-position: center;
     background-attachment: fixed;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
 }
  
 .spacetoshow-bgimage-fixed {
@@ -251,35 +255,23 @@ footer .footer{
     border-radius: 10px;
 }
  
-@media (max-width: 628px) and (min-width: 521px) {
+@media (max-width: 770px){
     .container-wout-header{
-        position: absolute;
-        top: 128px;
+        width: fit-content;
     }
-}
- 
-@media (max-width: 520px) and (min-width: 441px) {
-    .container-wout-header{
-        position: absolute;
-        top: 168px;
+    .logo-div{
+        display: flex;
+        
     }
-}
- 
-@media (max-width: 440px) and (min-width: 401px){
-    .container-wout-header{
-        position: absolute;
-        top: 200px;
+    .logo{
+        justify-content: center;
     }
-}
- 
-@media (max-width: 400px) {
-    .container-wout-header{
-        position: absolute;
-        top: 250px;
+    .cabecalho{
+        width: fit-content;
+        flex-wrap: wrap;
     }
-    /*
-    header .container{
-        flex-direction: column;
-        text-align: center;
-    }*/
+    header {
+        width: fit-content;
+    }
+
 }

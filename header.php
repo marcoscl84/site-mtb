@@ -1,4 +1,9 @@
-<?php $url_base = "http://localhost/apresenta-bikes"; ?>
+<?php $url_base = "http://localhost/apresenta-bikes"; 
+
+    if(isset($_REQUEST['enviaLogout'])){
+        session_destroy();
+    }
+?>
 
 <head>
     <link rel="stylesheet" href="../main.css"/>
@@ -9,17 +14,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
  
-<header style="margin:0px; z-index: 999">
+<header class="row flex-wrap" style="margin:0px; z-index: 999">
     <div class="row flex-wrap" style="background-color: #00D9A3; border-bottom: white solid 12px;">
        
-        <div class="col-md-2">
+        <div class="logo-div col-md-3">
             <a class="logo" href="<?php echo $url_base ?>/index.php">
                 <img src="<?php echo $url_base ?>/imagens/logo4984199.png" width="200" alt="mtblogo">
             </a>
         </div>
  
-        <div class="col-md-10">
-            <nav class="botoes navbar justify-content-end mt-3">
+        <div class="botoes-div col-md-9">
+            <div class="navbar justify-content-end botoes align-self-end">
                 <a href="<?php echo $url_base ?>/paginas/oqueeomtb.php">O que é o MTB</a>
                 <a href="<?php echo $url_base ?>/paginas/fotos.php">Fotos</a>
                 <a href="<?php echo $url_base ?>/paginas/videos.php">Vídeos</a>
@@ -28,12 +33,16 @@
                 <a href="<?php echo $url_base ?>/paginas/login.php">Login</a>
                
                 <!-- LOGOUT
-                <div class="logout">
-                    <button type="submit">LOGOUT</buttom>
-                    <input type="hidden" name="enviaLogout" value="deslogado">
-                </div>
+                < ?php if($_SESSION['login']){ ? >
+                    <form method="post" action="login.php">
+                        <div class="logout">
+                            <button type="submit">LOGOUT</buttom>
+                            <input type="hidden" name="enviaLogout" value="deslogado">
+                        </div>
+                    </form>           
+                < ?php } ? >
                 -->
-            </nav>
+            </div>
         </div>
     </div>
 </header>
