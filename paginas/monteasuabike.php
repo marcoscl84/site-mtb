@@ -22,13 +22,15 @@ if(isset($_REQUEST['envia'])){
  
 ?>
  
+<?php session_start(); ?>
+
 <head>
     <link rel="stylesheet" href="../main.css"/>
     <script>
         function opcaoOculta(){
             if(document.getElementById("mod").value == '1'){
                 document.getElementById("mod").style.display = 'flex';
-                document.getElementById("tip").style.display = 'flex'; 
+                document.getElementById("tip").style.display = 'flex';  
                 document.getElementById("tip").required = true;
             }
             if(document.getElementById("mod").value != '1'){

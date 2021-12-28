@@ -5,12 +5,6 @@ html, body{
  
 body{
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
-}
- 
-.cabecalho{
-    min-width: 100%;
 }
  
 header .logo{
@@ -21,7 +15,7 @@ header .botoes{
     font-family: Copperplate Gothic, Helvetica, sans-serif;
 }
 header a:hover{
-    color: rgb(180, 178, 178);
+    color: black;
     text-decoration: none;  
 }
 header .botoes a:link, a:visited {
@@ -30,7 +24,7 @@ header .botoes a:link, a:visited {
     padding: 10px 15px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    
 }
  
 .index-vid {
@@ -75,8 +69,6 @@ header .botoes a:link, a:visited {
     background-position: center;
     background-attachment: fixed;
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
 }
  
 .spacetoshow-bgimage-fixed {
@@ -144,7 +136,19 @@ header .botoes a:link, a:visited {
     margin-left: 250px;
     margin-right: 250px;
 }
- 
+/* @media (max-width: 770px) {
+    .o-que-e-mtb{
+        position: relative;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #00006f;
+        text-justify: auto;
+        margin-top: 50px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+  */
 .modalidades {
     position: relative;
     text-align: center;
@@ -255,23 +259,3 @@ footer .footer{
     border-radius: 10px;
 }
  
-@media (max-width: 770px){
-    .container-wout-header{
-        width: fit-content;
-    }
-    .logo-div{
-        display: flex;
-        
-    }
-    .logo{
-        justify-content: center;
-    }
-    .cabecalho{
-        width: fit-content;
-        flex-wrap: wrap;
-    }
-    header {
-        width: fit-content;
-    }
-
-}

@@ -1,3 +1,20 @@
+<?php
+session_start();
+/* echo session_id()."<br>";
+echo $_SESSION['username']; */
+
+if(isset($_REQUEST['logout'])){
+    session_unset();
+    session_destroy();
+}
+
+// LOGIN
+if(isset($_REQUEST['loginButton'])){
+    $_SESSION['username'] = $_REQUEST['username'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,10 +22,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
+    <link rel="stylesheet" href="../main.css"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
     <script>
 
         $('.carousel').carousel({
-            interval: 2000;
+            interval: 2000
         })
         
     </script>
@@ -18,13 +42,13 @@
     <title>MTB World</title>
 </head>
 
-<body class="bgimg-fixed">    
+<body class="bgimg-fixed d-flex flex-wrap">    
 
-    <div class="cabecalho">
+<!--     <div class="cabecalho" style="border: red solid 5px;"> -->
         <?php include "header.php"; ?>
-    </div>
-
-    <div class="container-wout-header">
+<!--     </div> -->
+    
+    <!-- <div class="container-wout-header"> -->
         
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="border-bottom:white solid 5px;">
             <ol class="carousel-indicators">
@@ -80,6 +104,6 @@
        
             <?php include "footer.php"; ?>
         </div>
-    </div>
+    <!-- </div> -->
 </body>
 </html>

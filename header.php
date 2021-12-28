@@ -1,9 +1,4 @@
-<?php $url_base = "http://localhost/apresenta-bikes"; 
-
-    if(isset($_REQUEST['enviaLogout'])){
-        session_destroy();
-    }
-?>
+<?php $url_base = "http://localhost/apresenta-bikes"; ?>
 
 <head>
     <link rel="stylesheet" href="../main.css"/>
@@ -14,35 +9,33 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
  
-<header class="row flex-wrap" style="margin:0px; z-index: 999">
-    <div class="row flex-wrap" style="background-color: #00D9A3; border-bottom: white solid 12px;">
+<header class="d-flex flex-wrap" style="margin:0px; z-index: 999; border: red solid 5px;">
+    <div class="row flex-wrap" style="background-color: #00D9A3; border-bottom: white solid 5px;">
        
-        <div class="logo-div col-md-3">
+        <div class="col-lg-2 col-12 align-items-center">
             <a class="logo" href="<?php echo $url_base ?>/index.php">
                 <img src="<?php echo $url_base ?>/imagens/logo4984199.png" width="200" alt="mtblogo">
             </a>
         </div>
  
-        <div class="botoes-div col-md-9">
-            <div class="navbar justify-content-end botoes align-self-end">
+        <div class="col-lg-10 col-12 flex-wrap">
+            <nav class="botoes navbar justify-content-center justify-content-lg-end mt-3">
                 <a href="<?php echo $url_base ?>/paginas/oqueeomtb.php">O que é o MTB</a>
                 <a href="<?php echo $url_base ?>/paginas/fotos.php">Fotos</a>
                 <a href="<?php echo $url_base ?>/paginas/videos.php">Vídeos</a>
                 <a href="<?php echo $url_base ?>/paginas/monteasuabike.php">Monte a sua bike</a>
                 <a href="<?php echo $url_base ?>/paginas/classificados.php">Classificados</a>
-                <a href="<?php echo $url_base ?>/paginas/login.php">Login</a>
-               
-                <!-- LOGOUT
-                < ?php if($_SESSION['login']){ ? >
-                    <form method="post" action="login.php">
-                        <div class="logout">
-                            <button type="submit">LOGOUT</buttom>
-                            <input type="hidden" name="enviaLogout" value="deslogado">
-                        </div>
-                    </form>           
-                < ?php } ? >
-                -->
-            </div>
+                
+                <!-- LOGIN OK -->
+                <?php if(!isset($_SESSION['username'])){ ?>
+                    <a href="<?php echo $url_base ?>/paginas/login.php">Login</a>
+                <?php } ?>
+
+                <!-- LOGOUT OK -->
+                <?php if(isset($_SESSION['username'])){ ?>
+                    <a href="<?php echo $url_base ?>/index.php?logout=endsession">Logout</a>               
+                <?php } ?>       
+            </nav>
         </div>
     </div>
 </header>
