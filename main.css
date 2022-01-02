@@ -136,19 +136,7 @@ header .botoes a:link, a:visited {
     margin-left: 250px;
     margin-right: 250px;
 }
-/* @media (max-width: 770px) {
-    .o-que-e-mtb{
-        position: relative;
-        text-align: center;
-        font-family: Arial, Helvetica, sans-serif;
-        color: #00006f;
-        text-justify: auto;
-        margin-top: 50px;
-        margin-left: 30px;
-        margin-right: 30px;
-    }
-}
-  */
+
 .modalidades {
     position: relative;
     text-align: center;

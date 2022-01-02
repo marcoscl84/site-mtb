@@ -72,74 +72,69 @@
         }  
     }
 
-    // LOGIN
-/*     if(isset($_REQUEST['loginButton'])){
-        session_start();
-
-        $_SESSION['username'] = $_REQUEST['username'];
-        $userLogado = $_SESSION['username'];
-        echo $userLogado;
-    } */
-
 ?>
  
         <div class="corpo-classificados">
             <div class="tabela-classificados">  
                
                 <!-- INSERT -->
-                <?php if(!isset($_REQUEST['updateId'])){ ?>      
-               
-                    <form method="post" action="classificados.php">
-                        <div class="formulario-insercao d-grid gap-0 col-6 mx-auto" style="padding:20px; box-shadow: 10px 10px 10px 8px #00D9A3; border-radius:10px;">
-                            <h2 style="font-family:Copperplate Gothic; text-align:center; margin:20px;">INSIRA OS DADOS DO PRODUTO</h2>
-                           
-                            <div class="form-floating mb-0">
-                                <input type="text" name="tipo" class="form-control" id="floatingInput" placeholder="TIPO">
-                                <label>Tipo</label><br>
+                <?php if(isset($_SESSION['username'])){ ?>
+                    <?php if(!isset($_REQUEST['updateId'])){ ?>      
+                
+                        <form method="post" action="classificados.php">
+                            <div class="formulario-insercao d-grid gap-0 col-6 mx-auto" style="padding:20px; box-shadow: 10px 10px 10px 8px #00D9A3; border-radius:10px;">
+                                <h2 style="font-family:Copperplate Gothic; text-align:center; margin:20px;">INSIRA OS DADOS DO PRODUTO</h2>
+                            
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="tipo" class="form-control" id="floatingInput" placeholder="TIPO">
+                                    <label>Tipo</label><br>
+                                </div>
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="marca" class="form-control" id="floatingInput" placeholder="MARCA">
+                                    <label>Marca</label><br>
+                                </div>
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="descricao" class="form-control" id="floatingInput" placeholder="DESCRIÇÃO">
+                                    <label>Descrição</label><br>
+                                </div>
+                                <div class="d-grid gap-2 col-4 mx-auto" style="margin:20px;">                              
+                                    <button type="submit" class="btn btn-outline-dark">Enviar</button>
+                                    <input type="hidden" name="cadastraProduto" value="cadastra">
+                                </div>
                             </div>
-                            <div class="form-floating mb-0">
-                                <input type="text" name="marca" class="form-control" id="floatingInput" placeholder="MARCA">
-                                <label>Marca</label><br>
-                            </div>
-                            <div class="form-floating mb-0">
-                                <input type="text" name="descricao" class="form-control" id="floatingInput" placeholder="DESCRIÇÃO">
-                                <label>Descrição</label><br>
-                            </div>
-                            <div class="d-grid gap-2 col-4 mx-auto" style="margin:20px;">                              
-                                <button type="submit" class="btn btn-outline-dark">Enviar</button>
-                                <input type="hidden" name="cadastraProduto" value="cadastra">
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    <?php } ?>
                 <?php } ?>
                
                 <!-- UPDATE -->
-                <?php if(isset($_REQUEST['updateId'])){ ?>  
-                    <form method="post" action="classificados.php">
-                        <?php $idProd = $_REQUEST['idProduto']; ?>
-                       
-                        <div class="formulario-insercao d-grid gap-0 col-6 mx-auto" style="padding:20px; box-shadow: 10px 10px 10px 8px #00D9A3; border-radius:10px;">
-                            <h2 style="font-family:Copperplate Gothic; text-align:center; margin:20px;">ATUALIZE OS DADOS DO PRODUTO</h2>
-                           
-                            <div class="form-floating mb-0">
-                                <input type="text" name="tipo" class="form-control" id="floatingInput" placeholder="TIPO">
-                                <label>Tipo</label><br>
+                <?php if(isset($_SESSION['username'])){ ?>
+                    <?php if(isset($_REQUEST['updateId'])){ ?>  
+                        <form method="post" action="classificados.php">
+                            <?php $idProd = $_REQUEST['idProduto']; ?>
+                        
+                            <div class="formulario-insercao d-grid gap-0 col-6 mx-auto" style="padding:20px; box-shadow: 10px 10px 10px 8px #00D9A3; border-radius:10px;">
+                                <h2 style="font-family:Copperplate Gothic; text-align:center; margin:20px;">ATUALIZE OS DADOS DO PRODUTO</h2>
+                            
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="tipo" class="form-control" id="floatingInput" placeholder="TIPO">
+                                    <label>Tipo</label><br>
+                                </div>
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="marca" class="form-control" id="floatingInput" placeholder="MARCA">
+                                    <label>Marca</label><br>
+                                </div>
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="descricao" class="form-control" id="floatingInput" placeholder="DESCRIÇÃO">
+                                    <label>Descrição</label><br>
+                                </div>
+                            
+                                <div class="d-grid gap-2 col-4 mx-auto" style="margin:20px;">
+                                    <button type="submit" class="btn btn-outline-dark" name="updateForm">Enviar</button>
+                                    <input type="hidden" name="idProduto" value="<?php echo $_REQUEST['idProduto'] ?>">
+                                </div>
                             </div>
-                            <div class="form-floating mb-0">
-                                <input type="text" name="marca" class="form-control" id="floatingInput" placeholder="MARCA">
-                                <label>Marca</label><br>
-                            </div>
-                            <div class="form-floating mb-0">
-                                <input type="text" name="descricao" class="form-control" id="floatingInput" placeholder="DESCRIÇÃO">
-                                <label>Descrição</label><br>
-                            </div>
-                           
-                            <div class="d-grid gap-2 col-4 mx-auto" style="margin:20px;">
-                                <button type="submit" class="btn btn-outline-dark" name="updateForm">Enviar</button>
-                                <input type="hidden" name="idProduto" value="<?php echo $_REQUEST['idProduto'] ?>">
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    <?php } ?>
                 <?php } ?>
  
            
@@ -177,22 +172,26 @@
                                     echo "<button name='interesse'>Estou interessado</buttom>";
                                 echo "</td>";
     */                
-                                ?> <form method="post" action="classificados.php"> <?php
-                                    // UPDATE BUTTON
-                                    echo "<td>";
-                                        echo '<button type="submit" name="updateId" class="btn btn-secondary" 
-                                        data-toggle="modal" data-target="#modalExemplo">Atualizar</buttom>';
-                                        echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
-                                    echo "</td>";
-                                ?> </form> <?php
+                                if(isset($_SESSION['username'])){ ?>
+                                    <form method="post" action="classificados.php"> <?php
+                                        // UPDATE BUTTON
+                                        echo "<td>";
+                                            echo '<button type="submit" name="updateId" class="btn btn-secondary" 
+                                            data-toggle="modal" data-target="#modalExemplo">Atualizar</buttom>';
+                                            echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
+                                        echo "</td>";
+                                    ?> </form> <?php 
+                                }
  
                                 // DELETE BUTTON
+                                if(isset($_SESSION['username'])){ 
                                 echo "<td>";
-?>                                  <form method="get" action="classificados.php">
-                                        <a class="btn btn-danger" href="classificados.php?acao=<?php echo $idProd ?>&deletar=excluir" 
-                                        onclick="return confirm('Tem certeza que deseja excluir seu anúncio?');">Excluir</a> 
-                                    </form>
-                                </td>
+                                    ?> <form method="get" action="classificados.php">
+                                            <a class="btn btn-danger" href="classificados.php?acao=<?php echo $idProd ?>&deletar=excluir" 
+                                            onclick="return confirm('Tem certeza que deseja excluir seu anúncio?');">Excluir</a> 
+                                        </form>
+                                    </td>
+                                <?php } ?>
                             </tr>
                         <?php } ?>
                     </table>

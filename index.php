@@ -44,9 +44,9 @@ if(isset($_REQUEST['loginButton'])){
 
 <body class="bgimg-fixed d-flex flex-wrap">    
 
-<!--     <div class="cabecalho" style="border: red solid 5px;"> -->
+    <!-- <div class="cabecalho"> -->
         <?php include "header.php"; ?>
-<!--     </div> -->
+    <!-- </div> -->
     
     <!-- <div class="container-wout-header"> -->
         

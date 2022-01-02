@@ -10,15 +10,15 @@
 </head>
  
 <header class="d-flex flex-wrap" style="margin:0px; z-index: 999; border: red solid 5px;">
-    <div class="row flex-wrap" style="background-color: #00D9A3; border-bottom: white solid 5px;">
+    <div class="row flex-wrap" style="background-color: #00D9A3; border-bottom: yellow solid 5px; width:105%;">
        
-        <div class="col-lg-2 col-12 align-items-center">
+        <div class="col-lg-2 col-12 align-items-center" style=" border: blue solid 7px;">
             <a class="logo" href="<?php echo $url_base ?>/index.php">
                 <img src="<?php echo $url_base ?>/imagens/logo4984199.png" width="200" alt="mtblogo">
             </a>
         </div>
  
-        <div class="col-lg-10 col-12 flex-wrap">
+        <div class="col-lg-10 col-12 flex-wrap" style=" border: red solid 5px;">
             <nav class="botoes navbar justify-content-center justify-content-lg-end mt-3">
                 <a href="<?php echo $url_base ?>/paginas/oqueeomtb.php">O que é o MTB</a>
                 <a href="<?php echo $url_base ?>/paginas/fotos.php">Fotos</a>
