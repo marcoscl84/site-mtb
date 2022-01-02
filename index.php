@@ -1,7 +1,5 @@
 <?php
 session_start();
-/* echo session_id()."<br>";
-echo $_SESSION['username']; */
 
 if(isset($_REQUEST['logout'])){
     session_unset();
@@ -10,7 +8,34 @@ if(isset($_REQUEST['logout'])){
 
 // LOGIN
 if(isset($_REQUEST['loginButton'])){
+    include "db-conexao/dbConnect.php";
+    
+    // RECEBE USER E SENHA INSERIDOS
     $_SESSION['username'] = $_REQUEST['username'];
+    $_SESSION['senha'] = $_REQUEST['senha'];
+    $usernameLogin = $_SESSION['username'];
+    $senhaLogin = md5($_SESSION['senha']);
+
+    // BUSCA SENHA REFERENTE AO USUÁRIO INSERIDO
+    $querySenha = "SELECT senha FROM usuario WHERE username='".$usernameLogin."'";
+    $senhaBanco = mysqli_query($conexao, $querySenha);
+    while($row = $senhaBanco->fetch_assoc()){
+        $pswrd = $row['senha'];
+    }
+
+    // COMPARA SENHAS E CRIA VARIÁVEL DE SESSÃO COM ID DO USUÁRIO
+    if($senhaLogin == $pswrd){
+        if($selectIdUser = mysqli_query($conexao, "SELECT id FROM usuario WHERE username='".$usernameLogin."'")){
+            while($row = $selectIdUser->fetch_assoc()){
+                $idUser = $row['id'];
+                echo $_SESSION['idUser'] = $idUser;
+            }
+        }
+    } else {
+        session_unset();
+        session_destroy();
+        echo "<br>teste se entra no bloco if";
+    } 
 }
 
 ?>

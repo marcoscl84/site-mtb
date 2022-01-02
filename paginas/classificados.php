@@ -26,50 +26,53 @@
     include "../db-conexao/dbConnect.php";
    
     $usuarioLogado = 10;
-   
-    // INSERT OK
-    if(isset($_REQUEST['cadastraProduto'])){
-        $tipo = $_REQUEST['tipo'];
-        $marca = $_REQUEST['marca'];
-        $descricao = $_REQUEST['descricao'];
-       
-        $sqlInsert = "INSERT INTO produto (tipo, marca, descricao, id_usuario)
-        VALUES ('$tipo', '$marca', '$descricao', '$usuarioLogado')";
-        if (mysqli_query($conexao, $sqlInsert)) {
-            ?> <script> alert("Registro criado!"); </script> <?php
-        } else {
-            ?> <script> alert("Oooops! Não deu certo..."); </script> <?php
-        }
-    }
- 
-    // UPDATE
-    if(isset($_REQUEST['updateForm'])){
-        $idProd = $_REQUEST['idProduto'];
-        $tipo = $_REQUEST['tipo'];
-        $marca = $_REQUEST['marca'];
-        $descricao = $_REQUEST['descricao'];
-   
-        $sqlUpdate = "UPDATE `produto` SET `tipo`='$tipo',
-        `marca`='$marca',`descricao`='$descricao' WHERE id=$idProd";
-        if (mysqli_query($conexao, $sqlUpdate)) {
-            ?> <script> alert("Registro alterado!"); </script> <?php
-        } else {
-            ?> <script> alert("Oooops! Não deu certo...") </script> <?php
-        }      
-    }
+    
+    if(isset($_SESSION['username'])){
 
-    // DELETE
-    if(isset($_REQUEST['acao'])){
-        if($_REQUEST['deletar'] == 'excluir'){
-            $idDelete = $_REQUEST['acao'];
-
-            $sqlDelete = "DELETE FROM produto WHERE id=$idDelete";
-            if (mysqli_query($conexao, $sqlDelete)) {
-                ?> <script> alert("Registro Excluído!"); </script> <?php
+        // INSERT
+        if(isset($_REQUEST['cadastraProduto'])){
+            $tipo = $_REQUEST['tipo'];
+            $marca = $_REQUEST['marca'];
+            $descricao = $_REQUEST['descricao'];
+        
+            $sqlInsert = "INSERT INTO produto (tipo, marca, descricao, id_usuario)
+            VALUES ('$tipo', '$marca', '$descricao', '$usuarioLogado')";
+            if (mysqli_query($conexao, $sqlInsert)) {
+                ?> <script> alert("Registro criado!"); </script> <?php
             } else {
-                ?> <script> alert("oooops! Registro não excluído"); </script> <?php
+                ?> <script> alert("Oooops! Não deu certo..."); </script> <?php
+            }
+        }
+    
+        // UPDATE
+        if(isset($_REQUEST['updateForm'])){
+            $idProd = $_REQUEST['idProduto'];
+            $tipo = $_REQUEST['tipo'];
+            $marca = $_REQUEST['marca'];
+            $descricao = $_REQUEST['descricao'];
+    
+            $sqlUpdate = "UPDATE `produto` SET `tipo`='$tipo',
+            `marca`='$marca',`descricao`='$descricao' WHERE id=$idProd";
+            if (mysqli_query($conexao, $sqlUpdate)) {
+                ?> <script> alert("Registro alterado!"); </script> <?php
+            } else {
+                ?> <script> alert("Oooops! Não deu certo...") </script> <?php
+            }      
+        }
+
+        // DELETE
+        if(isset($_REQUEST['acao'])){
+            if($_REQUEST['deletar'] == 'excluir'){
+                $idDelete = $_REQUEST['acao'];
+
+                $sqlDelete = "DELETE FROM produto WHERE id=$idDelete";
+                if (mysqli_query($conexao, $sqlDelete)) {
+                    ?> <script> alert("Registro Excluído!"); </script> <?php
+                } else {
+                    ?> <script> alert("oooops! Registro não excluído"); </script> <?php
+                }  
             }  
-        }  
+        }
     }
 
 ?>
@@ -172,26 +175,30 @@
                                     echo "<button name='interesse'>Estou interessado</buttom>";
                                 echo "</td>";
     */                
-                                if(isset($_SESSION['username'])){ ?>
-                                    <form method="post" action="classificados.php"> <?php
-                                        // UPDATE BUTTON
-                                        echo "<td>";
-                                            echo '<button type="submit" name="updateId" class="btn btn-secondary" 
-                                            data-toggle="modal" data-target="#modalExemplo">Atualizar</buttom>';
-                                            echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
-                                        echo "</td>";
-                                    ?> </form> <?php 
+                                // UPDATE BUTTON
+                                if(isset($_SESSION['username'])){ 
+                                    if(isset($_SESSION['idUser'])){ ?>
+                                        <form method="post" action="classificados.php"> <?php     
+                                            echo "<td>";
+                                                echo '<button type="submit" name="updateId" class="btn btn-secondary" 
+                                                data-toggle="modal" data-target="#modalExemplo">Atualizar</buttom>';
+                                                echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
+                                            echo "</td>";
+                                        ?> </form> <?php 
+                                    }
                                 }
  
                                 // DELETE BUTTON
-                                if(isset($_SESSION['username'])){ 
-                                echo "<td>";
-                                    ?> <form method="get" action="classificados.php">
-                                            <a class="btn btn-danger" href="classificados.php?acao=<?php echo $idProd ?>&deletar=excluir" 
-                                            onclick="return confirm('Tem certeza que deseja excluir seu anúncio?');">Excluir</a> 
-                                        </form>
-                                    </td>
-                                <?php } ?>
+                                if(isset($_SESSION['username'])){
+                                    if(isset($_SESSION['idUser'])){
+                                        echo "<td>";
+                                            ?> <form method="get" action="classificados.php">
+                                                <a class="btn btn-danger" href="classificados.php?acao=<?php echo $idProd ?>&deletar=excluir" 
+                                                onclick="return confirm('Tem certeza que deseja excluir seu anúncio?');">Excluir</a> 
+                                            </form>
+                                        </td>
+                                <?php } 
+                                    } ?>
                             </tr>
                         <?php } ?>
                     </table>
