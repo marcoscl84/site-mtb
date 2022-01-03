@@ -34,7 +34,7 @@ if(isset($_REQUEST['loginButton'])){
     } else {
         session_unset();
         session_destroy();
-        echo "<br>teste se entra no bloco if";
+        ?> <script> alert("Oooops! Usuário ou senha incorreto..."); </script> <?php
     } 
 }
 

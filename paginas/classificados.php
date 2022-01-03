@@ -24,11 +24,10 @@
 <?php
  
     include "../db-conexao/dbConnect.php";
-   
-    $usuarioLogado = 10;
     
     if(isset($_SESSION['username'])){
-
+        $usuarioLogado = $_SESSION['idUser'];
+        
         // INSERT
         if(isset($_REQUEST['cadastraProduto'])){
             $tipo = $_REQUEST['tipo'];
@@ -36,8 +35,17 @@
             $descricao = $_REQUEST['descricao'];
         
             $sqlInsert = "INSERT INTO produto (tipo, marca, descricao, id_usuario)
-            VALUES ('$tipo', '$marca', '$descricao', '$usuarioLogado')";
-            if (mysqli_query($conexao, $sqlInsert)) {
+                        VALUES ('$tipo', '$marca', '$descricao', '$usuarioLogado')";
+            mysqli_query($conexao, $sqlInsert);
+            
+            $maxId = mysqli_query($conexao, "SELECT MAX(ID) FROM produto");
+            while($line = $maxId->fetch_assoc()){
+                $lastId = $line['MAX(ID)'];
+            }
+
+            $sqlInsertProdUserTable = "INSERT INTO `usuario_produto`(`id_usuario`, `id_produto`) 
+                        VALUES ($usuarioLogado, $lastId)";
+            if (mysqli_query($conexao, $sqlInsertProdUserTable)) {
                 ?> <script> alert("Registro criado!"); </script> <?php
             } else {
                 ?> <script> alert("Oooops! Não deu certo..."); </script> <?php
@@ -50,14 +58,28 @@
             $tipo = $_REQUEST['tipo'];
             $marca = $_REQUEST['marca'];
             $descricao = $_REQUEST['descricao'];
-    
-            $sqlUpdate = "UPDATE `produto` SET `tipo`='$tipo',
-            `marca`='$marca',`descricao`='$descricao' WHERE id=$idProd";
-            if (mysqli_query($conexao, $sqlUpdate)) {
+
+            $sqlTesteUserProd = "SELECT T3.id
+                        FROM usuario T3
+                        INNER JOIN usuario_produto T2 
+                        ON T3.id = T2.id_usuario    
+                        INNER JOIN produto T1 
+                        ON T1.id = T2.id_produto
+                        WHERE T1.id = $idProd";
+            $sqlTesteUserProd = mysqli_query($conexao, $sqlTesteUserProd);
+            while($row = $sqlTesteUserProd->fetch_assoc()){
+                $idLogado = $row['id'];
+            }
+
+            if($idLogado == $usuarioLogado){
+                echo"teste";
+                $sqlUpdate = "UPDATE `produto` SET `tipo`='$tipo',
+                `marca`='$marca',`descricao`='$descricao' WHERE id=$idProd";
+                mysqli_query($conexao, $sqlUpdate);
                 ?> <script> alert("Registro alterado!"); </script> <?php
             } else {
-                ?> <script> alert("Oooops! Não deu certo...") </script> <?php
-            }      
+                ?> <script> alert("Este produto não pode ser alterado!") </script> <?php
+            }    
         }
 
         // DELETE
@@ -65,12 +87,27 @@
             if($_REQUEST['deletar'] == 'excluir'){
                 $idDelete = $_REQUEST['acao'];
 
-                $sqlDelete = "DELETE FROM produto WHERE id=$idDelete";
-                if (mysqli_query($conexao, $sqlDelete)) {
-                    ?> <script> alert("Registro Excluído!"); </script> <?php
-                } else {
-                    ?> <script> alert("oooops! Registro não excluído"); </script> <?php
-                }  
+
+                /* $sqlTesteUserProd = "SELECT T3.id
+                        FROM usuario T3
+                        INNER JOIN usuario_produto T2 
+                        ON T3.id = T2.id_usuario    
+                        INNER JOIN produto T1 
+                        ON T1.id = T2.id_produto
+                        WHERE T1.id = $idDelete";
+                $sqlTesteUserProd = mysqli_query($conexao, $sqlTesteUserProd);
+                while($row = $sqlTesteUserProd->fetch_assoc()){
+                    $idLogado = $row['id'];
+                }
+
+                if($idLogado == $usuarioLogado){ */
+                    $sqlDelete = "DELETE FROM produto WHERE id=$idDelete";
+                    if (mysqli_query($conexao, $sqlDelete)) {
+                        ?> <script> alert("Registro Excluído!"); </script> <?php
+                    } else {
+                        ?> <script> alert("Este produto não pode ser excluído!"); </script> <?php
+                    }  
+                /* } */
             }  
         }
     }
