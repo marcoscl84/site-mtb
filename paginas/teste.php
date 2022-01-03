@@ -8,15 +8,20 @@
 </head>
 <body>
   <?php
-  
-  if(isset($_GET['acao'])){
-    if($_GET['acao'] == 'excluir'){
-      echo "excluir";
-    }
-  }
 
-  echo '<a class="btn btn-danger" href="teste.php?acao=excluir"
-  onclick="return confirm(\'Tem certeza que deseja excluir seu anúncio?\');">Excluir</a>';
+include "../db-conexao/dbConnect.php";
+  
+  $sqlTesteUserProd = "SELECT T3.id
+                        FROM usuario T3
+                        INNER JOIN usuario_produto T2 
+                        ON T3.id = T2.id_usuario    
+                        INNER JOIN produto T1 
+                        ON T1.id = T2.id_produto
+                        WHERE T1.id = 2";
+                $sqlTesteUserProduto = mysqli_query($conexao, $sqlTesteUserProd);
+                while($row = $sqlTesteUserProduto->fetch_assoc()){
+                    echo $idLogado = $row['id'];
+                }
 
   ?>
   <!-- <a class="btn btn-danger" href="teste.php?acao=excluir" onclick="return confirm('excluir mesmo?');">Excluir</a> -->

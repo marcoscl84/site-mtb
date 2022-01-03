@@ -86,28 +86,26 @@
         if(isset($_REQUEST['acao'])){
             if($_REQUEST['deletar'] == 'excluir'){
                 $idDelete = $_REQUEST['acao'];
-
-
-                /* $sqlTesteUserProd = "SELECT T3.id
+                
+                $sqlTesteUserProd = "SELECT T3.id
                         FROM usuario T3
                         INNER JOIN usuario_produto T2 
                         ON T3.id = T2.id_usuario    
                         INNER JOIN produto T1 
                         ON T1.id = T2.id_produto
                         WHERE T1.id = $idDelete";
-                $sqlTesteUserProd = mysqli_query($conexao, $sqlTesteUserProd);
-                while($row = $sqlTesteUserProd->fetch_assoc()){
+                $sqlTesteUserProduto = mysqli_query($conexao, $sqlTesteUserProd);
+                while($row = $sqlTesteUserProduto->fetch_assoc()){
                     $idLogado = $row['id'];
                 }
-
-                if($idLogado == $usuarioLogado){ */
+                
+                if($idLogado == $usuarioLogado){
                     $sqlDelete = "DELETE FROM produto WHERE id=$idDelete";
-                    if (mysqli_query($conexao, $sqlDelete)) {
-                        ?> <script> alert("Registro Excluído!"); </script> <?php
-                    } else {
-                        ?> <script> alert("Este produto não pode ser excluído!"); </script> <?php
-                    }  
-                /* } */
+                    mysqli_query($conexao, $sqlDelete);
+                    ?> <script> alert("Registro Excluído!"); </script> <?php
+                } else {
+                    ?> <script> alert("Este produto não pode ser excluído!"); </script> <?php
+                }  
             }  
         }
     }
