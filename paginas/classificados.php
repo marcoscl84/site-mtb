@@ -215,7 +215,7 @@
                                     if(isset($_SESSION['idUser'])){ ?>
                                         <form method="post" action="classificados.php"> <?php     
                                             echo "<td>";
-                                                echo '<button type="submit" name="updateId" class="btn btn-secondary" 
+                                                echo '<button type="submit" name="updateId" class="btn btn-secondary btn-sm" 
                                                 data-toggle="modal" data-target="#modalExemplo">Atualizar</buttom>';
                                                 echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
                                             echo "</td>";
@@ -228,7 +228,7 @@
                                     if(isset($_SESSION['idUser'])){
                                         echo "<td>";
                                             ?> <form method="get" action="classificados.php">
-                                                <a class="btn btn-danger" href="classificados.php?acao=<?php echo $idProd ?>&deletar=excluir" 
+                                                <a class="btn btn-danger btn-sm" href="classificados.php?acao=<?php echo $idProd ?>&deletar=excluir" 
                                                 onclick="return confirm('Tem certeza que deseja excluir seu anúncio?');">Excluir</a> 
                                             </form>
                                         </td>

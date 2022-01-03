@@ -7,9 +7,6 @@ body{
     position: relative;
 }
  
-header .logo{
-    background-color: #00D9A3;
-}
 header .botoes{
     font-size: 20px;
     font-family: Copperplate Gothic, Helvetica, sans-serif;
@@ -23,8 +20,7 @@ header .botoes a:link, a:visited {
     color: white;
     padding: 10px 15px;
     text-align: center;
-    text-decoration: none;
-    
+    text-decoration: none;   
 }
  
 .index-vid {
