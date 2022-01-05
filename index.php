@@ -28,7 +28,7 @@ if(isset($_REQUEST['loginButton'])){
         if($selectIdUser = mysqli_query($conexao, "SELECT id FROM usuario WHERE username='".$usernameLogin."'")){
             while($row = $selectIdUser->fetch_assoc()){
                 $idUser = $row['id'];
-                echo $_SESSION['idUser'] = $idUser;
+                $_SESSION['idUser'] = $idUser;
             }
         }
     } else {

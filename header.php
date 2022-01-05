@@ -13,7 +13,7 @@
     <div class="row flex-wrap" style="background-color: #00D9A3; border-bottom: white solid 5px; width:105%;">
        
         <div class="col-lg-2 col-12">
-            <div class="justify-content-center">
+            <div class="d-flex justify-content-center">
                 <a href="<?php echo $url_base ?>/index.php">
                     <img src="<?php echo $url_base ?>/imagens/logo4984199.png" width="200" alt="mtblogo">
                 </a>

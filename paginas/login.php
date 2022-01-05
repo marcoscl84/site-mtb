@@ -42,49 +42,52 @@
 
 <!-- LOGIN -->
         <?php if(!isset($_REQUEST['novoUser'])){ ?>
-            <div class="d-grid col-10">
+            <div class="d-grid col-12">
                 <h1 style='text-align:center; font-family: Copperplate Gothic, Helvetica, sans-serif; 
                 margin:30px 0px 20px'>LOGIN</h1>
 
-                <form method="post" action="../index.php">                
-                    <div class="formulario-insercao d-grid gap-0 col-6 mx-auto" 
-                    style="padding:20px; box-shadow: 10px 10px 10px 8px #00D9A3; border-radius:10px;">
-                        <div class="form-floating mb-0">
-                            <input type="text" name="username" class="form-control" 
-                            id="floatingInput" placeholder="TIPO">
-                            <label>Usuário</label><br>
-                        </div>
+                
+                <div class="formulario-insercao gap-0 col-4 mx-auto justify-content-center" 
+                style="padding:20px; box-shadow: 10px 10px 10px 8px #00D9A3; border-radius:10px;">
+                    <div class="d-flex flex-column justify-content-center">
+                        <form method="post" action="../index.php">                
+                            <div class="form-floating mb-0">
+                                <input type="text" name="username" class="form-control" 
+                                id="floatingInput" placeholder="TIPO">
+                                <label>Usuário</label><br>
+                            </div>
 
-                        <div class="form-floating mb-0">
-                            <input type="password" name="senha" class="form-control" 
-                            id="floatingInput" placeholder="TIPO">
-                            <label>Senha</label><br>
-                        </div>
-                    
-                        <div class="d-grid gap-2 col-4 mx-auto" style="margin:5px;">
-                            <button type="submit" class="btn btn-outline-dark" name="loginButton">EFETUAR LOGIN</button>
-                            <input type="hidden" name="enviaLogin" value="logado">
-                        </div>
+                            <div class="form-floating mb-0">
+                                <input type="password" name="senha" class="form-control" 
+                                id="floatingInput" placeholder="TIPO">
+                                <label>Senha</label><br>
+                            </div>
+                        
+                            <div class="d-grid col- justify-content-center" style="margin:5px;">
+                                <button type="submit" class="btn btn-outline-dark text-wrap" name="loginButton">EFETUAR LOGIN</button>
+                                <input type="hidden" name="enviaLogin" value="logado">
+                            </div>
+                        </form>
+
+                        <!-- BOTAO NOVO USUARIO -->
+                        <?php if(!isset($_REQUEST['novoUser'])){ ?>
+                            <div class="d-grid col- justify-content-center">
+                                <form method="post" action="login.php">
+                                    <button type="submit" class="btn btn-danger text-wrap">CADASTRAR NOVO USUÁRIO</buttom>
+                                    <input type="hidden" name="novoUser" value="cadastra"> 
+                                </form>
+                            </div>
+                        <?php } ?>
                     </div>
-                </form>
+                </div> 
             </div>
         <?php } ?>
                     
-<!-- BOTAO NOVO USUARIO -->
-        <?php if(!isset($_REQUEST['novoUser'])){ ?>
-            <div class="d-grid col-2">
-                <form method="post" action="login.php">
-                    <div class="botao">
-                        <button type="submit" class="btn btn-danger">CADASTRAR NOVO USUÁRIO</buttom>
-                        <input type="hidden" name="novoUser" value="cadastra">
-                    </div>
-                </form>
-            </div>
-        <?php } ?>
+
     
 <!-- FORMULARIO CADASTRO NOVO USUARIO -->
         <?php if(isset($_REQUEST['novoUser'])){ ?>
-            <div class="formulario-insercao d-grid gap-0 col-6 mx-auto">
+            <div class="d-grid gap-0 col-6 mx-auto">
 
                 <h2 style='text-align:center; font-family: Copperplate Gothic, Helvetica, sans-serif; 
                 margin:30px 0px 20px'>CADASTRAR NOVO USUÁRIO</h2>
@@ -108,7 +111,7 @@
                             <label>Crie sua senha</label><br>
                         </div>
                     
-                        <button type="submit">CADASTRAR</button>
+                        <button type="submit" class="btn btn-outline-dark">CADASTRAR</button>
                         <input type="hidden" name="novoUsuario" value="criaUsuario">
                     </div>
                 </form>

@@ -8,7 +8,7 @@
         <?php include "../header.php"; ?>
     </div>
 
-    <div class="container-wout-header videos-container">
+    <div class="videos-container">
             
         <iframe class="container-iframe-youtube" width="70%" height="70%" 
         src="https://www.youtube.com/embed/V7bHM9Q9leo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

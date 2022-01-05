@@ -204,12 +204,7 @@
                                 echo "<td>" . $tipo . "</td>";
                                 echo "<td>" . $marca . "</td>";
                                 echo "<td>" . $descricao . "</td>";
-                               
-    /*                              echo "<td>";
-                                    // ao clicar deve receber o telefone do proprietário em um modal
-                                    echo "<button name='interesse'>Estou interessado</buttom>";
-                                echo "</td>";
-    */                
+                                           
                                 // UPDATE BUTTON
                                 if(isset($_SESSION['username'])){ 
                                     if(isset($_SESSION['idUser'])){ ?>
@@ -232,8 +227,8 @@
                                                 onclick="return confirm('Tem certeza que deseja excluir seu anúncio?');">Excluir</a> 
                                             </form>
                                         </td>
-                                <?php } 
-                                    } ?>
+                                    <?php } 
+                                } ?>
                             </tr>
                         <?php } ?>
                     </table>

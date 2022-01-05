@@ -121,17 +121,6 @@ header .botoes a:link, a:visited {
     transform: scale(1.5);
     border: solid white 10px;
 }
- 
-.o-que-e-mtb {
-    position: relative;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #00006f;
-    text-justify: auto;
-    margin-top: 50px;
-    margin-left: 250px;
-    margin-right: 250px;
-}
 
 .modalidades {
     position: relative;
@@ -235,11 +224,5 @@ footer .footer{
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
     width: 100%;  
-}
- 
-.formulario-insercao{
-    padding: 20px;
-    box-shadow: #00D9A3;
-    border-radius: 10px;
 }
  
