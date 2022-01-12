@@ -19,8 +19,6 @@
         <?php include "../header.php"; ?>
     </div>
  
-    <!-- <div class="container-wout-header"> -->
- 
 <?php
  
     include "../db-conexao/dbConnect.php";
@@ -71,12 +69,14 @@
                 $idLogado = $row['id'];
             }
 
-            if($idLogado == $usuarioLogado){
-                echo"teste";
-                $sqlUpdate = "UPDATE `produto` SET `tipo`='$tipo',
-                `marca`='$marca',`descricao`='$descricao' WHERE id=$idProd";
-                mysqli_query($conexao, $sqlUpdate);
-                ?> <script> alert("Registro alterado!"); </script> <?php
+            if(isset($idLogado)){
+                if($idLogado == $usuarioLogado){
+                    echo"teste";
+                    $sqlUpdate = "UPDATE `produto` SET `tipo`='$tipo',
+                    `marca`='$marca',`descricao`='$descricao' WHERE id=$idProd";
+                    mysqli_query($conexao, $sqlUpdate);
+                    ?> <script> alert("Registro alterado!"); </script> <?php
+                } 
             } else {
                 ?> <script> alert("Este produto não pode ser alterado!") </script> <?php
             }    
@@ -96,13 +96,15 @@
                         WHERE T1.id = $idDelete";
                 $sqlTesteUserProduto = mysqli_query($conexao, $sqlTesteUserProd);
                 while($row = $sqlTesteUserProduto->fetch_assoc()){
-                    $idLogado = $row['id'];
+                    echo $idLogado = $row['id'];
                 }
                 
-                if($idLogado == $usuarioLogado){
-                    $sqlDelete = "DELETE FROM produto WHERE id=$idDelete";
-                    mysqli_query($conexao, $sqlDelete);
-                    ?> <script> alert("Registro Excluído!"); </script> <?php
+                if(isset($idLogado)){
+                    if($idLogado == $usuarioLogado){
+                        $sqlDelete = "DELETE FROM produto WHERE id=$idDelete";
+                        mysqli_query($conexao, $sqlDelete);
+                        ?> <script> alert("Registro Excluído!"); </script> <?php
+                    } 
                 } else {
                     ?> <script> alert("Este produto não pode ser excluído!"); </script> <?php
                 }  
@@ -238,5 +240,5 @@
         </div>
         <br>
         <?php include "../footer.php"; ?>
-    <!-- </div> -->
+
 </body>

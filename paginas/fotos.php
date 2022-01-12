@@ -41,8 +41,7 @@
         <div class="fotos">
             <img src="../imagens/64a8a20be4.jpg" alt="imagem" />
         </div>
-
-        <br>
-        <?php include "../footer.php"; ?>
+        <br>  
     </div>
+    <?php include "../footer.php"; ?>
 </body>
