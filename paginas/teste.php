@@ -7,22 +7,12 @@
 
 </head>
 <body>
-  <?php
 
-include "../db-conexao/dbConnect.php";
-  
-  $sqlTesteUserProd = "SELECT T3.id
-                        FROM usuario T3
-                        INNER JOIN usuario_produto T2 
-                        ON T3.id = T2.id_usuario    
-                        INNER JOIN produto T1 
-                        ON T1.id = T2.id_produto
-                        WHERE T1.id = 2";
-                $sqlTesteUserProduto = mysqli_query($conexao, $sqlTesteUserProd);
-                while($row = $sqlTesteUserProduto->fetch_assoc()){
-                    echo $idLogado = $row['id'];
-                }
+<!-- <img src="captcha.php?l=150&a=50&tf=20&ql=5">
 
-  ?>
-  <!-- <a class="btn btn-danger" href="teste.php?acao=excluir" onclick="return confirm('excluir mesmo?');">Excluir</a> -->
+<form action="validar.php" name="form" method="post">
+   <input type="text" name="palavra"  />
+   <input type="submit" value="Validar Captcha" />
+</form> -->
+
 </body>

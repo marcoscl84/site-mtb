@@ -72,7 +72,7 @@
                         <!-- BOTAO NOVO USUARIO -->
                         <?php if(!isset($_REQUEST['novoUser'])){ ?>
                             <div class="d-grid col- justify-content-center">
-                                <form method="post" action="login.php">
+                                <form method="post" action="novo-usuario.php">
                                     <button type="submit" class="btn btn-danger text-wrap">CADASTRAR NOVO USUÁRIO</buttom>
                                     <input type="hidden" name="novoUser" value="cadastra"> 
                                 </form>
@@ -86,7 +86,7 @@
 
     
 <!-- FORMULARIO CADASTRO NOVO USUARIO -->
-        <?php if(isset($_REQUEST['novoUser'])){ ?>
+        <!-- <?php if(isset($_REQUEST['novoUser'])){ ?>
             <div class="d-grid gap-0 col-6 mx-auto">
 
                 <h2 style='text-align:center; font-family: Copperplate Gothic, Helvetica, sans-serif; 
@@ -110,14 +110,26 @@
                             <input type="password" name="senha" class="form-control" id="floatingInput" placeholder="TIPO">
                             <label>Crie sua senha</label><br>
                         </div>
-                    
-                        <button type="submit" class="btn btn-outline-dark">CADASTRAR</button>
-                        <input type="hidden" name="novoUsuario" value="criaUsuario">
-                    </div>
+
+                        <?php if(isset($_POST['palavra'])){
+                            if($_POST["palavra"] == $_SESSION["palavra"]){ ?>
+                            <button type="submit" class="btn btn-outline-dark">CADASTRAR</button>
+                            <input type="hidden" name="novoUsuario" value="criaUsuario">
+                            <?php } else {
+                                echo "<h1>Tente novamente!</h1>";
+                                echo "<a href='login.php'>Retornar</a>";
+                            }
+                        } ?>
                 </form>
+                        <img src="captcha.php?l=150&a=50&tf=20&ql=5"><br>
+                        <form action="login.php" name="form" method="post">
+                            <input type="text" name="palavra"  />
+                            <input type="submit" value="Validar Captcha" />
+                        </form>
+                    </div>
             </div>
         <?php } ?>
-
+ -->
         <br>
         <?php include "../footer.php"; ?>  
     </div>
