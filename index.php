@@ -12,30 +12,42 @@ if(isset($_REQUEST['loginButton'])){
     
     // RECEBE USER E SENHA INSERIDOS
     $_SESSION['username'] = $_REQUEST['username'];
-    $_SESSION['senha'] = $_REQUEST['senha'];
     $usernameLogin = $_SESSION['username'];
-    $senhaLogin = md5($_SESSION['senha']);
 
-    // BUSCA SENHA REFERENTE AO USUÁRIO INSERIDO
-    $querySenha = "SELECT senha FROM usuario WHERE username='".$usernameLogin."'";
-    $senhaBanco = mysqli_query($conexao, $querySenha);
-    while($row = $senhaBanco->fetch_assoc()){
-        $pswrd = $row['senha'];
+    $confereUser = "";
+    $verificaUsuario = mysqli_query($conexao, "SELECT * FROM usuario WHERE username='".$usernameLogin."'");
+    while($line = $verificaUsuario->fetch_assoc()){
+        $confereUser = $line['username'];
     }
-
-    // COMPARA SENHAS E CRIA VARIÁVEL DE SESSÃO COM ID DO USUÁRIO
-    if($senhaLogin == $pswrd){
-        if($selectIdUser = mysqli_query($conexao, "SELECT id FROM usuario WHERE username='".$usernameLogin."'")){
-            while($row = $selectIdUser->fetch_assoc()){
-                $idUser = $row['id'];
-                $_SESSION['idUser'] = $idUser;
+    if($confereUser != ""){
+        $_SESSION['senha'] = $_REQUEST['senha'];
+        $senhaLogin = md5($_SESSION['senha']);
+    
+        // BUSCA SENHA REFERENTE AO USUÁRIO INSERIDO
+        $querySenha = "SELECT senha FROM usuario WHERE username='".$usernameLogin."'";
+        $senhaBanco = mysqli_query($conexao, $querySenha);
+        while($row = $senhaBanco->fetch_assoc()){
+            $pswrd = $row['senha'];
+        }
+    
+        // COMPARA SENHAS E CRIA VARIÁVEL DE SESSÃO COM ID DO USUÁRIO
+        if($senhaLogin == $pswrd){
+            if($selectIdUser = mysqli_query($conexao, "SELECT id FROM usuario WHERE username='".$usernameLogin."'")){
+                while($row = $selectIdUser->fetch_assoc()){
+                    $idUser = $row['id'];
+                    $_SESSION['idUser'] = $idUser;
+                }
             }
+        } else {
+            session_unset();
+            session_destroy();
+            ?> <script> alert("Oooops! Usuário ou senha incorreto..."); </script> <?php
         }
     } else {
         session_unset();
         session_destroy();
-        ?> <script> alert("Oooops! Usuário ou senha incorreto..."); </script> <?php
-    } 
+        ?> <script> alert("Oooops! Usuário não existe..."); </script> <?php
+    }
 }
 
 ?>

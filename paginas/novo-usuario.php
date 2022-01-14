@@ -53,7 +53,7 @@
                         </div>
                         <form action="novo-usuario.php" name="form" method="post">
                             <input type="text" name="palavra"  />
-                            <input type="submit" value="Validar Captcha" />
+                            <input class="btn btn-secondary btn-sm" type="submit" value="Validar Captcha" />
                         </form>
                     </div>
                 </div>
