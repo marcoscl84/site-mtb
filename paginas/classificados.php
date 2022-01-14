@@ -71,7 +71,6 @@
 
             if(isset($idLogado)){
                 if($idLogado == $usuarioLogado){
-                    echo"teste";
                     $sqlUpdate = "UPDATE `produto` SET `tipo`='$tipo',
                     `marca`='$marca',`descricao`='$descricao' WHERE id=$idProd";
                     mysqli_query($conexao, $sqlUpdate);
@@ -96,7 +95,7 @@
                         WHERE T1.id = $idDelete";
                 $sqlTesteUserProduto = mysqli_query($conexao, $sqlTesteUserProd);
                 while($row = $sqlTesteUserProduto->fetch_assoc()){
-                    echo $idLogado = $row['id'];
+                    $idLogado = $row['id'];
                 }
                 
                 if(isset($idLogado)){
@@ -144,10 +143,8 @@
                             </div>
                         </form>
                     <?php } ?>
-                <?php } ?>
                
-                <!-- UPDATE -->
-                <?php if(isset($_SESSION['username'])){ ?>
+                    <!-- UPDATE -->
                     <?php if(isset($_REQUEST['updateId'])){ ?>  
                         <form method="post" action="classificados.php">
                             <?php $idProd = $_REQUEST['idProduto']; ?>
@@ -174,68 +171,96 @@
                                 </div>
                             </div>
                         </form>
-                    <?php } ?>
+                    <?php }
+
+                    /* SELECT USUÁRIO LOGADO */
+                    echo "<div class='container'>";
+                        $classificBusca = mysqli_query($conexao, "SELECT * FROM produto WHERE id_usuario=$usuarioLogado ORDER BY tipo");
+                        echo "<h1 style='text-align:center; font-family: Copperplate Gothic, Helvetica, sans-serif; margin:30px 0px 20px'>CLASSIFICADOS</h1>";
+                        echo "<table class='table'>";
+                            echo '<thead class="table-dark">';
+                            
+                                echo "<th>PRODUTO</th>";
+                                echo "<th>MARCA</th>";
+                                echo "<th>DESCRIÇÃO</th>";
+                                echo "<th></th>";
+                                echo "<th></th>";
+                            
+                            echo "</thead>";
+
+                            while($linha = mysqli_fetch_assoc($classificBusca)) {
+                                echo "<tr>";
+                                    $idProd = (int)$linha['id'];
+                                    $id_usuario = (int)$linha['id_usuario'];
+                                    $tipo = $linha['tipo'];
+                                    $marca = $linha['marca'];
+                                    $descricao = $linha['descricao'];
+
+                                    echo "<td>" . $tipo . "</td>";
+                                    echo "<td>" . $marca . "</td>";
+                                    echo "<td>" . $descricao . "</td>";
+                                            
+                                    // UPDATE BUTTON
+                                    if(isset($_SESSION['username'])){ 
+                                        if(isset($_SESSION['idUser'])){ ?>
+                                            <form method="post" action="classificados.php"> <?php     
+                                                echo "<td>";
+                                                    echo '<button type="submit" name="updateId" class="btn btn-secondary btn-sm" 
+                                                    data-toggle="modal" data-target="#modalExemplo">Atualizar</buttom>';
+                                                    echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
+                                                echo "</td>";
+                                            ?> </form> <?php 
+                                        }
+                                    }
+
+                                    // DELETE BUTTON
+                                    if(isset($_SESSION['username'])){
+                                        if(isset($_SESSION['idUser'])){
+                                            echo "<td>";
+                                                ?> <form method="get" action="classificados.php">
+                                                    <a class="btn btn-danger btn-sm" href="classificados.php?acao=<?php echo $idProd ?>&deletar=excluir" 
+                                                    onclick="return confirm('Tem certeza que deseja excluir seu anúncio?');">Excluir</a> 
+                                                </form>
+                                            </td>
+                                        <?php } 
+                                    } ?>
+                                </tr>
+                            <?php } ?>
+                        </table>
+                    </div>
                 <?php } ?>
- 
            
                 <!-- SELECT -->
-                <div class="container">
- 
+                <?php if(!isset($_SESSION['username'])){ ?>
+                    <div class="container">
 <?php                
-                    $classificBusca = mysqli_query($conexao, "SELECT * FROM produto ORDER BY tipo");
-                    echo "<h1 style='text-align:center; font-family: Copperplate Gothic, Helvetica, sans-serif; margin:30px 0px 20px'>CLASSIFICADOS</h1>";
-                    echo "<table class='table'>";
-                        echo '<thead class="table-dark">';
-                           
-                            echo "<th>PRODUTO</th>";
-                            echo "<th>MARCA</th>";
-                            echo "<th>DESCRIÇÃO</th>";
-                            echo "<th></th>";
-                            echo "<th></th>";
-                           
-                        echo "</thead>";
- 
-                        while($linha = mysqli_fetch_assoc($classificBusca)) {
-                            echo "<tr>";
-                                $idProd = (int)$linha['id'];
-                                $id_usuario = (int)$linha['id_usuario'];
-                                $tipo = $linha['tipo'];
-                                $marca = $linha['marca'];
-                                $descricao = $linha['descricao'];
- 
-                                echo "<td>" . $tipo . "</td>";
-                                echo "<td>" . $marca . "</td>";
-                                echo "<td>" . $descricao . "</td>";
-                                           
-                                // UPDATE BUTTON
-                                if(isset($_SESSION['username'])){ 
-                                    if(isset($_SESSION['idUser'])){ ?>
-                                        <form method="post" action="classificados.php"> <?php     
-                                            echo "<td>";
-                                                echo '<button type="submit" name="updateId" class="btn btn-secondary btn-sm" 
-                                                data-toggle="modal" data-target="#modalExemplo">Atualizar</buttom>';
-                                                echo '<input type="hidden" name="idProduto" value="'.$linha['id'].'">';
-                                            echo "</td>";
-                                        ?> </form> <?php 
-                                    }
-                                }
- 
-                                // DELETE BUTTON
-                                if(isset($_SESSION['username'])){
-                                    if(isset($_SESSION['idUser'])){
-                                        echo "<td>";
-                                            ?> <form method="get" action="classificados.php">
-                                                <a class="btn btn-danger btn-sm" href="classificados.php?acao=<?php echo $idProd ?>&deletar=excluir" 
-                                                onclick="return confirm('Tem certeza que deseja excluir seu anúncio?');">Excluir</a> 
-                                            </form>
-                                        </td>
-                                    <?php } 
-                                } ?>
-                            </tr>
-                        <?php } ?>
-                    </table>
+                        $classificBusca = mysqli_query($conexao, "SELECT * FROM produto ORDER BY tipo");
+                        echo "<h1 style='text-align:center; font-family: Copperplate Gothic, Helvetica, sans-serif; margin:30px 0px 20px'>CLASSIFICADOS</h1>";
+                        echo "<table class='table'>";
+                            echo '<thead class="table-dark">';
 
-                </div>
+                                    echo "<th class='col-4'>PRODUTO</th>";
+                                    echo "<th class='col-4'>MARCA</th>";
+                                    echo "<th class='col-4'>DESCRIÇÃO</th>";
+
+                            echo "</thead>";
+    
+                            while($linha = mysqli_fetch_assoc($classificBusca)) {
+                                echo "<tr>";
+                                    $idProd = (int)$linha['id'];
+                                    $id_usuario = (int)$linha['id_usuario'];
+                                    $tipo = $linha['tipo'];
+                                    $marca = $linha['marca'];
+                                    $descricao = $linha['descricao'];
+    
+                                    echo "<td class='col-4'>" . $tipo . "</td>";
+                                    echo "<td class='col-4'>" . $marca . "</td>";
+                                    echo "<td class='col-4'>" . $descricao . "</td>";
+                                echo "</tr>";
+                            } ?>
+                        </table>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <br>
