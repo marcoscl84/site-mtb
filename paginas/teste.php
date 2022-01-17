@@ -5,14 +5,60 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+
+  <!-- criação captcha -->
+  
+  <script> 
+    var num1, num2, resposta;
+
+    window.onload = function() { 
+      console.log("carregou")
+      
+      soma;
+      num1 = Math.floor(Math.random() * 10);
+      num2 = Math.floor(Math.random() * 10);
+      resposta = num1 + num2;
+
+      document.getElementById("teste").innerHTML = "qual a soma de " + num1 + " + " + num2 + "?";
+    }
+
+    function soma() {
+      console.log("carrrgou soma");
+      num1 = Math.floor(Math.random() * 10);
+      num2 = Math.floor(Math.random() * 10);
+      resposta = num1 + num2;
+      console.log("num1 " + num1);
+      console.log("num2 " + num2);
+
+      document.getElementById("teste").innerHTML = "qual a soma de " + num1 + " + " + num2 + "?";
+      console.log("resp " + resposta);
+    }
+
+    var result = resposta
+
+    function calcula() {
+      console.log(document.getElementById("valida").value)
+      if (document.getElementById("valida").value != resposta) {
+        soma();
+      } else {
+        document.getElementById("tip").style.display = 'flex'; 
+      }
+    }
+
+  </script>
+
 </head>
 <body>
 
-<!-- <img src="captcha.php?l=150&a=50&tf=20&ql=5">
 
-<form action="validar.php" name="form" method="post">
-   <input type="text" name="palavra"  />
-   <input type="submit" value="Validar Captcha" />
-</form> -->
+   <p id="teste"></p>
+   <input id="valida" type="text"/>
+   <input type="submit" value="Enviar" onclick="calcula()"/>
+   <p id="mensagem"></p>
+   <input type="text" id="tip" style="display:none;"/>
+
+  <script>
+    
+  </script>
 
 </body>

@@ -5,6 +5,47 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script>
+
+    var num1, num2, resposta;
+
+    window.onload = function() { 
+        console.log("carregou")
+        
+        soma;
+        num1 = Math.floor(Math.random() * 10);
+        num2 = Math.floor(Math.random() * 10);
+        resposta = num1 + num2;
+
+        document.getElementById("teste").innerHTML = "Qual a soma de " + num1 + " + " + num2 + "?";
+    }
+
+    function soma() {
+        console.log("carrrgou soma");
+        num1 = Math.floor(Math.random() * 10);
+        num2 = Math.floor(Math.random() * 10);
+        resposta = num1 + num2;
+        console.log("num1 " + num1);
+        console.log("num2 " + num2);
+
+        document.getElementById("teste").innerHTML = "Qual a soma de " + num1 + " + " + num2 + "?";
+        console.log("resp " + resposta);
+    }
+
+    var result = resposta
+
+    function calcula() {
+        console.log(document.getElementById("valida").value)
+        if (document.getElementById("valida").value != resposta) {
+            soma();
+        } else {
+            document.getElementById("tip").style.display = 'flex'; 
+        }
+    }
+
+    </script>
+
 </head>
 
 <body>
@@ -37,24 +78,13 @@
                         <label>Crie sua senha</label><br>
                     </div>
 
-                    <?php if(isset($_POST['palavra'])){
-                        if($_POST["palavra"] == $_SESSION["palavra"]){ ?>
-                        <button type="submit" class="btn btn-outline-dark">CADASTRAR</button>
-                        <input type="hidden" name="novoUsuario" value="criaUsuario">
-                        <?php } else {
-                            echo "<h1>Tente novamente!</h1>";
-                            echo "<a href='login.php'>Retornar</a>";
-                        }
-                    } ?>
+                    <button type="submit" id="tip" class="btn btn-outline-dark" style="display:none;">CADASTRAR</button>
+                    <input type="hidden" name="novoUsuario" value="criaUsuario">
             </form>
                     <div class="d-grid col- justify-content-center">
-                        <div class="d-grid col- justify-content-center" style="margin-bottom:10px;">
-                            <img src="captcha.php?l=150&a=50&tf=20&ql=5">
-                        </div>
-                        <form action="novo-usuario.php" name="form" method="post">
-                            <input type="text" name="palavra"  />
-                            <input class="btn btn-secondary btn-sm" type="submit" value="Validar Captcha" />
-                        </form>
+                        <p id="teste" style="text-align:center"></p>
+                        <input id="valida" type="text" style="margin-bottom:15px"/>
+                        <input type="submit" value="Enviar" class="btn btn-outline-secondary" onclick="calcula()"/>    
                     </div>
                 </div>
         </div>
