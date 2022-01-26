@@ -12,6 +12,7 @@
 <header class="d-flex flex-wrap" style="margin:0px; z-index: 999;">
     <div class="row flex-wrap" style="background-color: #00D9A3; border-bottom: white solid 5px; width:105%;">
        
+        <!-- LOGOTIPO -->
         <div class="col-lg-2 col-12">
             <div class="d-flex justify-content-center">
                 <a href="<?php echo $url_base ?>/index.php">
@@ -20,6 +21,7 @@
             </div>
         </div>
  
+        <!-- LINKS -->
         <div class="col-lg-10 col-12 flex-wrap">
             <nav class="botoes navbar justify-content-center justify-content-lg-end mt-3">
                 <a href="<?php echo $url_base ?>/paginas/oqueeomtb.php">O que é o MTB</a>
@@ -28,12 +30,12 @@
                 <a href="<?php echo $url_base ?>/paginas/monteasuabike.php">Monte a sua bike</a>
                 <a href="<?php echo $url_base ?>/paginas/classificados.php">Classificados</a>
                 
-                <!-- LOGIN OK -->
+                <!-- LINK LOGIN -->
                 <?php if(!isset($_SESSION['username'])){ ?>
                     <a href="<?php echo $url_base ?>/paginas/login.php">Login</a>
                 <?php } ?>
 
-                <!-- LOGOUT OK -->
+                <!-- LINK LOGOUT -->
                 <?php if(isset($_SESSION['username'])){ ?>
                     <a href="<?php echo $url_base ?>/index.php?logout=endsession">Logout</a>               
                 <?php } ?>       

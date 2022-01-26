@@ -15,6 +15,7 @@
 </head> 
  
 <body>
+    <!-- CABEÇALHO -->
     <div class="cabecalho">
         <?php include "../header.php"; ?>
     </div>
@@ -22,7 +23,7 @@
 <?php include "../db-conexao/dbConnect.php"; ?>   
 
 <?php            
-            /* SELECT */
+            /* SELECT TABELA PRODUTOS */
             echo "<div class='container'>";
 
                 if(isset($_SESSION['username'])){ ?>
@@ -61,6 +62,7 @@
         </div>
     </div>
     <br>
+    <!-- RODAPÉ -->
     <?php include "../footer.php"; ?>
 
 </body>

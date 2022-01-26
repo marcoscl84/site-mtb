@@ -81,10 +81,12 @@ if(isset($_REQUEST['loginButton'])){
 
 <body class="bgimg-fixed d-flex flex-wrap">    
 
+    <!-- CABEÇALHO -->
     <div class="cabecalho" style="width:120%;">
         <?php include "header.php"; ?>
     </div>
         
+    <!-- SLIDES -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="border-bottom:white solid 5px;">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -114,6 +116,7 @@ if(isset($_REQUEST['loginButton'])){
 
     <div class="container-wout-slides-header-index">
 
+        <!-- VIDEO -->
         <div class="index-vid">
             <iframe width="100%" height="450px" 
             src="https://www.youtube.com/embed/X723bYcMtXI" title="YouTube video player" 
@@ -121,8 +124,10 @@ if(isset($_REQUEST['loginButton'])){
             gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
+        <!-- ESPAÇO VAZIO COM IMAGEM DE FUNDO -->
         <div class="spacetoshow-bgimage-fixed"></div>
     
+        <!-- LINKS PARCEIROS -->
         <div class="websites">
             <a class="links" href="https://www.roadtripmtb.com.br" target="_blank">
                 <img src="<?php echo $url_base ?>/imagens/IMG-20210719-WA0006.jpg" width="100" alt="roadtripmtb">
@@ -137,6 +142,7 @@ if(isset($_REQUEST['loginButton'])){
             </a>        
         </div>
     
+        <!-- RODAPÉ -->
         <?php include "footer.php"; ?>
     </div>
 </body>
