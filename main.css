@@ -4,23 +4,7 @@ html, body{
 }
  
 body{
-    position: relative;
-}
- 
-header .botoes{
-    font-size: 20px;
-    font-family: Copperplate Gothic, Helvetica, sans-serif;
-}
-header a:hover{
-    color: black;
-    text-decoration: none;  
-}
-header .botoes a:link, a:visited {
-    background-color: #00D9A3;
-    color: white;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;   
+    position: absolute;
 }
  
 .index-vid {
@@ -30,8 +14,8 @@ header .botoes a:link, a:visited {
  
 /* container sem header */
 .container-wout-header {
-    position: absolute;
-    top: 110px;
+    position: relative;
+    /* margin-top: 110px; */
     width: 100%;
     height: 100%;
 }
@@ -43,20 +27,7 @@ header .botoes a:link, a:visited {
     height: 100%;
 }
  
-.videos-container > .container-iframe-youtube {
-    position: relative;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    top: 20px;
-    border: 3px;
-    border-color: rgb(148, 113, 113);
-    border-style:solid;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
+
  
 .bgimg-fixed{
     background-image: url("imagens/20180527_172407.jpg");
@@ -79,49 +50,8 @@ header .botoes a:link, a:visited {
     width: 100%;
     height: fit-content;
 }
- 
-/* Página "fotos" */
- 
-.thumbnail{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-}
- 
-.fotos img {
-    max-width: 100%;
-    display: flexbox;
-    width: 350px;
-    margin: 20px;
-}
- 
-.fotos img {
-    -webkit-transition: all 1s ease;
-    /* Safari and Chrome */
-    -moz-transition: all 1s ease;
-    /* Firefox */
-    -o-transition: all 1s ease;
-    /* IE 9 */
-    -ms-transition: all 1s ease;
-    /* Opera */
-    transition: all 1s ease;
-}
- 
-.fotos:hover img {
-    -webkit-transform: scale(1.5);
-    /* Safari and Chrome */
-    -moz-transform: scale(1.5);
-    /* Firefox */
-    -ms-transform: scale(1.5);
-    /* IE 9 */
-    -o-transform: scale(1.5);
-    /* Opera */
-    transform: scale(1.5);
-    border: solid white 10px;
-}
 
+ 
 .modalidades {
     position: relative;
     text-align: center;
@@ -142,47 +72,6 @@ header .botoes a:link, a:visited {
 }
  
 /* Página "monte a sua bike" */
-select {
-    position: relative;
-    font-family: Copperplate Gothic, Helvetica, sans-serif;
-    font-size: 15px;
-    width: 200px;
-    height: 40px;
-    text-align: center;
-    background-color: 00D9A3;
-    color: white;
-    top: 0px;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    z-index: 99;
-    cursor: pointer;
-    border: solid black 1px;
-    margin-bottom: 20px;
-   
-}
- 
-.seleciona-itens {
-    width: auto;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center
-}
- 
-.seleciona-modalidade .seleciona-marca .seleciona-tipo {
-    height: auto;
-}
- 
-select:hover {
-    box-shadow: 4px 4px 8px black;
-    transition-duration: 1s;
-}
- 
-.submit-botao {
-    text-align: center;
-}
  
 #envia {
     background-color: cornflowerblue;

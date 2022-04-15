@@ -4,16 +4,49 @@ $url_base = "http://localhost/apresenta-bikes";
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://localhost/apresenta-bikes/main.css"/>
-
+    
+    <!-- link para fazer efeito ao clicar nos inputs -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <style type="text/css">
+        .corpoPag{
+            margin-top: 290px;
+        }
+ 
+        @media (min-width: 538px){
+            .corpoPag{
+                margin-top: 240px;
+            }        
+        }
+ 
+        @media (min-width: 950px){
+            .corpoPag{
+                margin-top: 180px;
+            }        
+        }
+ 
+        @media (min-width: 991px){
+            .corpoPag{
+                margin-top: 135px;
+            }        
+        }
+ 
+        @media (min-width: 1099px){
+            .corpoPag{
+                margin-top: 110px;
+            }        
+        }
+
+        footer .footer{
+            text-align: center;
+            height: fit-content;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+            width: 100%;  
+        }
+    </style>
 </head> 
 
-<body>
-    <div class="cabecalho">
-        <?php include "../header.php"; ?>
-    </div>
 
 <?php
  
@@ -108,14 +141,19 @@ $url_base = "http://localhost/apresenta-bikes";
     }
 
 ?>
+<body>
+    <div class="cabecalho">
+        <?php include "../header.php"; ?>
+    </div>
+    <br> 
 
-    <div class="corpo-classificados">
+    <div class="corpoPag">
         <div class="tabela-classificados">  
 
             <!-- VISUALIZAR TODOS OS ANÚNCIOS -->
             <?php if(isset($_SESSION['username'])){ ?>
                 <div class="d-flex justify-content-center" style="margin: 20px 0px;">
-                    <a href="<?php echo $url_base ?>/paginas/classificados.php" class="btn btn-info">Ver todos os anúncios</a>
+                    <a href="<?php echo $url_base ?>/paginas/classificados.php" class="btn btn-secondary">Ver todos os anúncios</a>
                 </div>
             <?php } ?>
             
@@ -124,25 +162,26 @@ $url_base = "http://localhost/apresenta-bikes";
                 if(!isset($_REQUEST['updateId'])){ ?>      
             
                     <form method="post" action="classificados-usuario.php">
-
-                        <div class="formulario-insercao d-grid gap-0 col-10 col-sm-6 mx-auto" style="padding:20px; box-shadow: 10px 10px 10px 8px #00D9A3; border-radius:10px;">
-                            <h2 style="font-family:Copperplate Gothic; text-align:center; margin:20px;">QUER VENDER MAIS? cadastre aqui</h2>
-                        
-                            <div class="form-floating mb-0">
-                                <input type="text" name="tipo" class="form-control" id="floatingInput" placeholder="TIPO">
-                                <label>Tipo</label><br>
-                            </div>
-                            <div class="form-floating mb-0">
-                                <input type="text" name="marca" class="form-control" id="floatingInput" placeholder="MARCA">
-                                <label>Marca</label><br>
-                            </div>
-                            <div class="form-floating mb-0">
-                                <input type="text" name="descricao" class="form-control" id="floatingInput" placeholder="DESCRIÇÃO">
-                                <label>Descrição</label><br>
-                            </div>
-                            <div class="d-grid gap-2 col-4 mx-auto" style="margin:20px;">                              
-                                <button type="submit" class="btn btn-outline-dark">Enviar</button>
-                                <input type="hidden" name="cadastraProduto" value="cadastra">
+                        <div class="row">
+                            <div class="formulario-insercao d-grid gap-0 col-10 col-sm-6 mx-auto" style="padding:20px; box-shadow: 10px 10px 10px 8px #00D9A3; border-radius:10px;">
+                                <h2 style="font-family:Copperplate Gothic; text-align:center; margin:20px;">QUER VENDER MAIS? <br>cadastre aqui</h2>
+                            
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="tipo" class="form-control" id="floatingInput" placeholder="TIPO">
+                                    <label>Tipo</label><br>
+                                </div>
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="marca" class="form-control" id="floatingInput" placeholder="MARCA">
+                                    <label>Marca</label><br>
+                                </div>
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="descricao" class="form-control" id="floatingInput" placeholder="DESCRIÇÃO">
+                                    <label>Descrição</label><br>
+                                </div>
+                                <div class="d-grid gap-2 col-4 mx-auto" style="margin:20px;">                              
+                                    <button type="submit" class="btn btn-outline-dark">Enviar</button>
+                                    <input type="hidden" name="cadastraProduto" value="cadastra">
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -153,26 +192,27 @@ $url_base = "http://localhost/apresenta-bikes";
                 <?php if(isset($_REQUEST['updateId'])){ ?>  
                     <form method="post" action="classificados-usuario.php">
                         <?php $idProd = $_REQUEST['idProduto']; ?>
-                    
-                        <div class="formulario-insercao d-grid gap-0 col-10 col-sm-6 mx-auto" style="padding:20px; box-shadow: 10px 10px 10px 8px #00D9A3; border-radius:10px;">
-                            <h2 style="font-family:Copperplate Gothic; text-align:center; margin:20px;">ATUALIZE OS DADOS DO PRODUTO</h2>
-                        
-                            <div class="form-floating mb-0">
-                                <input type="text" name="tipo" class="form-control" id="floatingInput" placeholder="TIPO">
-                                <label>Tipo</label><br>
-                            </div>
-                            <div class="form-floating mb-0">
-                                <input type="text" name="marca" class="form-control" id="floatingInput" placeholder="MARCA">
-                                <label>Marca</label><br>
-                            </div>
-                            <div class="form-floating mb-0">
-                                <input type="text" name="descricao" class="form-control" id="floatingInput" placeholder="DESCRIÇÃO">
-                                <label>Descrição</label><br>
-                            </div>
-                        
-                            <div class="d-grid gap-2 col-4 mx-auto" style="margin:20px;">
-                                <button type="submit" class="btn btn-outline-dark" name="updateForm">Enviar</button>
-                                <input type="hidden" name="idProduto" value="<?php echo $_REQUEST['idProduto'] ?>">
+                        <div class="row">
+                            <div class="formulario-insercao d-grid gap-0 col-10 col-sm-6 mx-auto" style="padding:20px; box-shadow: 10px 10px 10px 8px #00D9A3; border-radius:10px;">
+                                <h2 style="font-family:Copperplate Gothic; text-align:center; margin:20px;">ATUALIZE OS DADOS DO PRODUTO</h2>
+                            
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="tipo" class="form-control" id="floatingInput" placeholder="TIPO">
+                                    <label>Tipo</label><br>
+                                </div>
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="marca" class="form-control" id="floatingInput" placeholder="MARCA">
+                                    <label>Marca</label><br>
+                                </div>
+                                <div class="form-floating mb-0">
+                                    <input type="text" name="descricao" class="form-control" id="floatingInput" placeholder="DESCRIÇÃO">
+                                    <label>Descrição</label><br>
+                                </div>
+                            
+                                <div class="d-grid gap-2 col-4 mx-auto" style="margin:20px;">
+                                    <button type="submit" class="btn btn-outline-dark" name="updateForm">Enviar</button>
+                                    <input type="hidden" name="idProduto" value="<?php echo $_REQUEST['idProduto'] ?>">
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -238,4 +278,5 @@ $url_base = "http://localhost/apresenta-bikes";
     </div>
     <br>
     <?php include "../footer.php"; ?>
+
 </body>
